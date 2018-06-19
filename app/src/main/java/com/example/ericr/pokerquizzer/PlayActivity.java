@@ -18,40 +18,29 @@ public class PlayActivity extends AppCompatActivity {
 
         Random random = new Random();
         int randomQuestion = random.nextInt(3);
-
         Resources res = getResources();
+
+//declare question array and answer array
+        TypedArray answerResources = res.obtainTypedArray(R.array.answers);
+        int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the nth string array
+        answerResources.recycle();//free
+        //if (resId < 0) {QUESTION DOES NOT EXIST.  CHECK strings.xml OR RNG}
+        String [] questionAnswers = res.getStringArray(resId);
         String[] questions = res.getStringArray(R.array.question_array);
-        String[] questionOneAnswers = res.getStringArray(R.array.questionOneAnswers);
-        String[] questionTwoAnswers = res.getStringArray(R.array.questionTwoAnswers);
-        String[] questionThreeAnswers = res.getStringArray(R.array.questionThreeAnswers);
 
+//declare buttons and textview
         TextView questionTextView = findViewById(R.id.questionTextView);
-        Button firstAnswerBtn = (Button)findViewById(R.id.firstAnswerBtn);
-        Button secondAnswerBtn = (Button)findViewById(R.id.secondAnswerBtn);
-        Button thirdAnswerBtn = (Button) findViewById(R.id.thirdAnswerBtn);
-        Button fourthAnswerBtn = (Button) findViewById(R.id.fourthAnswerBtn);
+        Button firstAnswerBtn = findViewById(R.id.firstAnswerBtn);
+        Button secondAnswerBtn = findViewById(R.id.secondAnswerBtn);
+        Button thirdAnswerBtn = findViewById(R.id.thirdAnswerBtn);
+        Button fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
 
-
+//set the question and the buttons to the randomQuestion
         questionTextView.setText(questions[randomQuestion]);
-        if(randomQuestion==0) {
-            firstAnswerBtn.setText(questionOneAnswers[0]);
-            secondAnswerBtn.setText(questionOneAnswers[1]);
-            thirdAnswerBtn.setText(questionOneAnswers[2]);
-            fourthAnswerBtn.setText(questionOneAnswers[3]);
-        }
-        else if(randomQuestion==1){
-            firstAnswerBtn.setText(questionTwoAnswers[0]);
-            secondAnswerBtn.setText(questionTwoAnswers[1]);
-            thirdAnswerBtn.setText(questionTwoAnswers[2]);
-            fourthAnswerBtn.setText(questionTwoAnswers[3]);
-        }
-        else if(randomQuestion==2){
-            firstAnswerBtn.setText(questionThreeAnswers[0]);
-            secondAnswerBtn.setText(questionThreeAnswers[1]);
-            thirdAnswerBtn.setText(questionThreeAnswers[2]);
-            fourthAnswerBtn.setText(questionThreeAnswers[3]);
-        }
-
+        firstAnswerBtn.setText(questionAnswers[0]);
+        secondAnswerBtn.setText(questionAnswers[1]);
+        thirdAnswerBtn.setText(questionAnswers[2]);
+        fourthAnswerBtn.setText(questionAnswers[3]);
 
     }
 }
