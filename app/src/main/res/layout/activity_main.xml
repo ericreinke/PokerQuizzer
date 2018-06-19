@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:theme = "@style/AppTheme"
     android:background="@drawable/green_gradient">
 
     <TextView
