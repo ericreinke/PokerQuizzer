@@ -31,24 +31,25 @@ public class PlayActivity extends AppCompatActivity {
         Button thirdAnswerBtn = (Button) findViewById(R.id.thirdAnswerBtn);
         Button fourthAnswerBtn = (Button) findViewById(R.id.fourthAnswerBtn);
 
+
         questionTextView.setText(questions[randomQuestion]);
-        if(randomQuestion==1){
+        if(randomQuestion==0) {
             firstAnswerBtn.setText(questionOneAnswers[0]);
-            secondAnswerBtn.setText(questionOneAnswers[2]);
-            thirdAnswerBtn.setText(questionOneAnswers[3]);
-            fourthAnswerBtn.setText(questionOneAnswers[4]);
+            secondAnswerBtn.setText(questionOneAnswers[1]);
+            thirdAnswerBtn.setText(questionOneAnswers[2]);
+            fourthAnswerBtn.setText(questionOneAnswers[3]);
         }
-        if(randomQuestion==2){
+        else if(randomQuestion==1){
             firstAnswerBtn.setText(questionTwoAnswers[0]);
-            secondAnswerBtn.setText(questionTwoAnswers[2]);
-            thirdAnswerBtn.setText(questionTwoAnswers[3]);
-            fourthAnswerBtn.setText(questionTwoAnswers[4]);
+            secondAnswerBtn.setText(questionTwoAnswers[1]);
+            thirdAnswerBtn.setText(questionTwoAnswers[2]);
+            fourthAnswerBtn.setText(questionTwoAnswers[3]);
         }
-        if(randomQuestion==3){
+        else if(randomQuestion==2){
             firstAnswerBtn.setText(questionThreeAnswers[0]);
-            secondAnswerBtn.setText(questionThreeAnswers[2]);
-            thirdAnswerBtn.setText(questionThreeAnswers[3]);
-            fourthAnswerBtn.setText(questionThreeAnswers[4]);
+            secondAnswerBtn.setText(questionThreeAnswers[1]);
+            thirdAnswerBtn.setText(questionThreeAnswers[2]);
+            fourthAnswerBtn.setText(questionThreeAnswers[3]);
         }
 
 
