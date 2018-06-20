@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent playIntent = new Intent(MainActivity.this, PlayActivity.class);
                 startActivity(playIntent);
+                finish();
             }
         });
     }

@@ -1,5 +1,10 @@
 package com.example.ericr.pokerquizzer;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
@@ -42,5 +47,33 @@ public class PlayActivity extends AppCompatActivity {
         thirdAnswerBtn.setText(questionAnswers[2]);
         fourthAnswerBtn.setText(questionAnswers[3]);
 
+        //DialogFragment newFragment = new FireMissilesDialogFragment();
+        //newFragment.show(getSupportFragmentManager(), "missiles");
     }
+    public void onBackPressed() {
+        backButtonOverride();
+        return;
+    }
+    public void backButtonOverride(){
+        AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
+        alertDialog.setTitle("!");
+        alertDialog.setMessage("Return to Main Menu?");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent start = new Intent(PlayActivity.this, MainActivity.class);
+                        startActivity(start);
+                        finish();
+                    }
+                });
+        alertDialog.show();
+
+    }
+
 }
