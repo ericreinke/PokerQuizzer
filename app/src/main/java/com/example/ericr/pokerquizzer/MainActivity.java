@@ -1,5 +1,7 @@
 package com.example.ericr.pokerquizzer;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,5 +25,28 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public void onBackPressed() {
+        backButtonOverride();
+        return;
+    }
+    public void backButtonOverride(){
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle("!");
+        alertDialog.setMessage("Quit?");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+        alertDialog.show();
+
     }
 }
