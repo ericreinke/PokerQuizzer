@@ -1,8 +1,6 @@
 package com.example.ericr.pokerquizzer;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -28,7 +26,7 @@ public class PlayActivity extends AppCompatActivity {
 
         Resources res = getResources();
 
-//Timer initiation
+    //Timer initiation
         final TextView timerTextView = findViewById(R.id.timerTextView);
         new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -45,7 +43,7 @@ public class PlayActivity extends AppCompatActivity {
             }
         }.start();
 
-//declare question array and answer array
+    //declare question array and answer array
         TypedArray answerResources = res.obtainTypedArray(R.array.answers);
         int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the nth string array
         answerResources.recycle();//free
@@ -53,7 +51,7 @@ public class PlayActivity extends AppCompatActivity {
         String [] questionAnswers = res.getStringArray(resId);
         String[] questions = res.getStringArray(R.array.question_array);
 
-//declare buttons and textView
+    //declare buttons and textView
         TextView questionTextView = findViewById(R.id.questionTextView);
         Button firstAnswerBtn = findViewById(R.id.firstAnswerBtn);
         Button secondAnswerBtn = findViewById(R.id.secondAnswerBtn);
@@ -61,7 +59,7 @@ public class PlayActivity extends AppCompatActivity {
         Button fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
         Button[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
 
-//shuffle the four answers:
+    //shuffle the four answers:
         int correctIndex=0;
         for(int i=0; i<4; i++){
             int randomShuffle = random.nextInt(4);
@@ -76,7 +74,7 @@ public class PlayActivity extends AppCompatActivity {
             questionAnswers[randomShuffle]=hold;
         }
 
-//set1  the question and the buttons to the randomQuestion
+    //set1  the question and the buttons to the randomQuestion
         questionTextView.setText(questions[randomQuestion]);
         answerButtons[0].setText(questionAnswers[0]);
         answerButtons[1].setText(questionAnswers[1]);
