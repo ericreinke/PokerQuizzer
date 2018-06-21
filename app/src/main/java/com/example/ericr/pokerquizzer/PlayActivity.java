@@ -45,7 +45,7 @@ public class PlayActivity extends AppCompatActivity {
 //shuffle the four answers:
         int correctIndex=0;
         for(int i=0; i<4; i++){
-            int randomShuffle = random.nextInt(3);
+            int randomShuffle = random.nextInt(4);
             if(i==correctIndex){//keep track of the correct answer (which always starts at 0)
                 correctIndex=randomShuffle;
             }
