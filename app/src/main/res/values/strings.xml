@@ -14,22 +14,22 @@
     </array>
 
         <string-array name = "questionOneAnswers">
-            <item>Question 1, Correct!</item>
-            <item>Question 1, Wrong!</item>
-            <item>Question 1, Wrong!</item>
-            <item>Question 1, Wrong!</item>
+            <item>Correct!</item>
+            <item>Wrong!</item>
+            <item>Wrong!</item>
+            <item>Wrong!</item>
         </string-array>
         <string-array name = "questionTwoAnswers">
-            <item>Question 2, Correct!</item>
-            <item>Question 2, Wrong!</item>
-            <item>Question 2, Wrong!</item>
-            <item>Question 2, Wrong!</item>
+            <item>Correct!</item>
+            <item>Wrong!</item>
+            <item>Wrong!</item>
+            <item>Wrong!</item>
         </string-array>
         <string-array name = "questionThreeAnswers">
-            <item>Question 3, Correct!</item>
-            <item>Question 3, Wrong!</item>
-            <item>Question 3, Wrong!</item>
-            <item>Question 3, Wrong!</item>
+            <item>Correct!</item>
+            <item>Wrong!</item>
+            <item>Wrong!</item>
+            <item>Wrong!</item>
         </string-array>
 
 </resources>

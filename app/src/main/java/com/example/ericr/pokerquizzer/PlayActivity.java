@@ -9,6 +9,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import java.util.Random;
@@ -22,7 +23,7 @@ public class PlayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play);
 
         Random random = new Random();
-        int randomQuestion = random.nextInt(3);
+        int randomQuestion = random.nextInt(3);//number is the number of questions and should probably not be hard coded
         Resources res = getResources();
 
 //declare question array and answer array
@@ -33,22 +34,46 @@ public class PlayActivity extends AppCompatActivity {
         String [] questionAnswers = res.getStringArray(resId);
         String[] questions = res.getStringArray(R.array.question_array);
 
-//declare buttons and textview
+//declare buttons and textView
         TextView questionTextView = findViewById(R.id.questionTextView);
         Button firstAnswerBtn = findViewById(R.id.firstAnswerBtn);
         Button secondAnswerBtn = findViewById(R.id.secondAnswerBtn);
         Button thirdAnswerBtn = findViewById(R.id.thirdAnswerBtn);
         Button fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
+        Button[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
 
-//set the question and the buttons to the randomQuestion
+//shuffle the four answers:
+        int correctIndex=0;
+        for(int i=0; i<4; i++){
+            int randomShuffle = random.nextInt(3);
+            if(i==correctIndex){//keep track of the correct answer (which always starts at 0)
+                correctIndex=randomShuffle;
+            }
+            else if(randomShuffle==correctIndex){
+                correctIndex=i;
+            }
+            String hold=questionAnswers[i];//quick lil swapperoo
+            questionAnswers[i]=questionAnswers[randomShuffle];
+            questionAnswers[randomShuffle]=hold;
+        }
+
+//set1  the question and the buttons to the randomQuestion
         questionTextView.setText(questions[randomQuestion]);
-        firstAnswerBtn.setText(questionAnswers[0]);
-        secondAnswerBtn.setText(questionAnswers[1]);
-        thirdAnswerBtn.setText(questionAnswers[2]);
-        fourthAnswerBtn.setText(questionAnswers[3]);
+        answerButtons[0].setText(questionAnswers[0]);
+        answerButtons[1].setText(questionAnswers[1]);
+        answerButtons[2].setText(questionAnswers[2]);
+        answerButtons[3].setText(questionAnswers[3]);
 
-        //DialogFragment newFragment = new FireMissilesDialogFragment();
-        //newFragment.show(getSupportFragmentManager(), "missiles");
+
+        answerButtons[correctIndex].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent playIntent = new Intent(PlayActivity.this, PlayActivity.class);
+                startActivity(playIntent);
+                finish();
+            }
+        });
+
     }
     public void onBackPressed() {
         backButtonOverride();
