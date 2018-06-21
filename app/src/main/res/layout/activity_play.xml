@@ -90,12 +90,14 @@
         android:id="@+id/questionTextView"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:text="Question Placeholder"
+        app:layout_constraintBottom_toTopOf="@+id/thirdFlop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,5 +158,16 @@
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@+id/thirdAnswerBtn"
         app:layout_constraintTop_toBottomOf="@+id/secondAnswerBtn" />
+
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Timer Placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

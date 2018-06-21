@@ -7,16 +7,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import java.util.Random;
-import java.util.Collections;
+import java.util.Timer;
 
 public class PlayActivity extends AppCompatActivity {
-
+    private boolean isPaused=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +25,25 @@ public class PlayActivity extends AppCompatActivity {
 
         Random random = new Random();
         int randomQuestion = random.nextInt(3);//number is the number of questions and should probably not be hard coded
+
         Resources res = getResources();
+
+//Timer initiation
+        final TextView timerTextView = findViewById(R.id.timerTextView);
+        new CountDownTimer(30000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
+                if(isPaused) {
+                    //transfer timer info to next Activity
+                    cancel();
+                    finish();
+                }
+            }
+            public void onFinish() {
+               timerTextView.setText("Done!");
+               //start gameOverActivity
+            }
+        }.start();
 
 //declare question array and answer array
         TypedArray answerResources = res.obtainTypedArray(R.array.answers);
@@ -70,15 +89,17 @@ public class PlayActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent playIntent = new Intent(PlayActivity.this, PlayActivity.class);
                 startActivity(playIntent);
+                isPaused=true;
                 finish();
             }
         });
 
     }
+
     public void onBackPressed() {
         backButtonOverride();
-        return;
     }
+
     public void backButtonOverride(){
         AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
         alertDialog.setTitle("!");
