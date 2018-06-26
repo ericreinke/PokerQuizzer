@@ -35,43 +35,21 @@ public class PlayActivity extends AppCompatActivity {
         Button fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
         final Button[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
 
-    //Timer initiation
+        //Timer initiation
         final TextView timerTextView = findViewById(R.id.timerTextView);
         new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
             }
             public void onFinish() {
-               timerTextView.setText("Done!");
-               finish();
-               //start gameOverActivity
+                timerTextView.setText("Done!");
+                finish();
+                //start gameOverActivity
             }
         }.start();
 
+        newQuestion(questionTextView,answerButtons);//CREATES A NEW QUESTION, mutates correctIndex (0-3);
 
-
-
-        correctIndex=newQuestion(questionTextView,answerButtons);//CREATES A NEW QUESTION and returns the correct index (0-3);
-        answerButtons[correctIndex].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                correctDialog(questionTextView, answerButtons);
-
-            }
-        });
-        for (int i = 0; i < 4; i++) {
-            final int j = i;
-            if (j != correctIndex) {
-                answerButtons[j].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        wrongDialog(questionTextView, answerButtons);
-
-                    }
-                });
-            }
-
-        }
 
 
 
@@ -103,19 +81,19 @@ public class PlayActivity extends AppCompatActivity {
         alertDialog.show();
 
     }
-    public int newQuestion(TextView questionTextView, Button[] answerButtons){
+    public void newQuestion(final TextView questionTextView, final Button[] answerButtons){
         Resources res = getResources();
         Random random = new Random();
         int randomQuestion = random.nextInt(3);//number is the number of questions and should probably not be hard coded
-     //declare question array and answer array
+        //declare question array and answer array
         TypedArray answerResources = res.obtainTypedArray(R.array.answers);
         int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the nth string array
         answerResources.recycle();//free
-     //if (resId < 0) {QUESTION DOES NOT EXIST.  CHECK strings.xml OR RNG}
+        //if (resId < 0) {QUESTION DOES NOT EXIST.  CHECK strings.xml OR RNG}
         String [] questionAnswers = res.getStringArray(resId);
         String[] questions = res.getStringArray(R.array.question_array);
 
-     //shuffle the four answers:
+        //shuffle the four answers:
         int correctIndex=0;
         for(int i=0; i<4; i++){
             int randomShuffle = random.nextInt(4);
@@ -130,13 +108,34 @@ public class PlayActivity extends AppCompatActivity {
             questionAnswers[randomShuffle]=hold;
         }
 
-     //set the question and the buttons to the randomQuestion
+        //set the question and the buttons to the randomQuestion
         questionTextView.setText(questions[randomQuestion]);
         answerButtons[0].setText(questionAnswers[0]);
         answerButtons[1].setText(questionAnswers[1]);
         answerButtons[2].setText(questionAnswers[2]);
         answerButtons[3].setText(questionAnswers[3]);
-        return correctIndex;
+
+        for (int i = 0; i < 4; i++) {
+            final int j = i;
+            if (j != correctIndex) {
+                answerButtons[j].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        wrongDialog(questionTextView, answerButtons);
+                    }
+                });
+            }
+            else{
+                answerButtons[j].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        correctDialog(questionTextView,answerButtons);
+                    }
+                });
+            }
+
+        }
+
     }
     public void wrongDialog(final TextView questionTextView, final Button[] answerButtons){
         AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
