@@ -20,6 +20,7 @@ import java.util.Timer;
 public class PlayActivity extends AppCompatActivity {
     private boolean isPaused=false;
     private int correctIndex=0;
+    private long resumeFromMillis = 30000; //timer starts at 30 seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,19 +36,8 @@ public class PlayActivity extends AppCompatActivity {
         Button fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
         final Button[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
 
-        //Timer initiation
-        final TextView timerTextView = findViewById(R.id.timerTextView);
-        new CountDownTimer(30000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
-            }
-            public void onFinish() {
-                timerTextView.setText("Done!");
-                finish();
-                //start gameOverActivity
-            }
-        }.start();
 
+        createTimer();//creates timer
         newQuestion(questionTextView,answerButtons);//CREATES A NEW QUESTION, mutates correctIndex (0-3);
 
 
@@ -121,6 +111,7 @@ public class PlayActivity extends AppCompatActivity {
                 answerButtons[j].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        isPaused=true;
                         wrongDialog(questionTextView, answerButtons);
                     }
                 });
@@ -129,6 +120,7 @@ public class PlayActivity extends AppCompatActivity {
                 answerButtons[j].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        isPaused=true;
                         correctDialog(questionTextView,answerButtons);
                     }
                 });
@@ -146,6 +138,8 @@ public class PlayActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         newQuestion(questionTextView, answerButtons);
                         dialog.dismiss();
+                        isPaused=false;
+                        createTimer();
                     }
                 });
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Why?",
@@ -167,6 +161,8 @@ public class PlayActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         newQuestion(questionTextView, answerButtons);
                         dialog.dismiss();
+                        isPaused=false;
+                        createTimer();
                     }
                 });
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Why?",
@@ -178,6 +174,26 @@ public class PlayActivity extends AppCompatActivity {
                     }
                 });
         alertDialog.show();
+    }
+    public void createTimer(){
+        //Timer initiation
+        final TextView timerTextView = findViewById(R.id.timerTextView);
+        new CountDownTimer(resumeFromMillis, 10) {
+
+            public void onTick(long millisUntilFinished) {
+                timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
+                if(isPaused){
+                    resumeFromMillis=millisUntilFinished;
+                    cancel();
+                }
+            }
+            public void onFinish() {
+                timerTextView.setText("Done!");
+                cancel();
+                finish();
+                //start gameOverActivity
+            }
+        }.start();
     }
 
 }
