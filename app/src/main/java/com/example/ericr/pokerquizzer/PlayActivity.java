@@ -21,6 +21,7 @@ public class PlayActivity extends AppCompatActivity {
     private boolean isPaused=false;
     private int correctIndex=0;
     private long resumeFromMillis = 30000; //timer starts at 30 seconds
+    private int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class PlayActivity extends AppCompatActivity {
 
         //declare buttons and textView
         final TextView questionTextView = findViewById(R.id.questionTextView);
+        final TextView scoreTextView = findViewById(R.id.scoreTextView);
         Button firstAnswerBtn = findViewById(R.id.firstAnswerBtn);
         Button secondAnswerBtn = findViewById(R.id.secondAnswerBtn);
         Button thirdAnswerBtn = findViewById(R.id.thirdAnswerBtn);
@@ -38,7 +40,7 @@ public class PlayActivity extends AppCompatActivity {
 
 
         createTimer();//creates timer
-        newQuestion(questionTextView,answerButtons);//CREATES A NEW QUESTION, mutates correctIndex (0-3);
+        newQuestion(questionTextView,answerButtons,scoreTextView);//CREATES A NEW QUESTION, mutates correctIndex (0-3);
 
 
 
@@ -71,7 +73,8 @@ public class PlayActivity extends AppCompatActivity {
         alertDialog.show();
 
     }
-    public void newQuestion(final TextView questionTextView, final Button[] answerButtons){
+    public void newQuestion(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
+        scoreTextView.setText("Score: "+score);
         Resources res = getResources();
         Random random = new Random();
         int randomQuestion = random.nextInt(3);//number is the number of questions and should probably not be hard coded
@@ -112,7 +115,7 @@ public class PlayActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         isPaused=true;
-                        wrongDialog(questionTextView, answerButtons);
+                        wrongDialog(questionTextView, answerButtons,scoreTextView);
                     }
                 });
             }
@@ -121,7 +124,7 @@ public class PlayActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         isPaused=true;
-                        correctDialog(questionTextView,answerButtons);
+                        correctDialog(questionTextView,answerButtons,scoreTextView);
                     }
                 });
             }
@@ -129,14 +132,14 @@ public class PlayActivity extends AppCompatActivity {
         }
 
     }
-    public void wrongDialog(final TextView questionTextView, final Button[] answerButtons){
+    public void wrongDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
         AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
         alertDialog.setTitle("Oops!");
         alertDialog.setMessage("Wrong answer!!");
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Next Question",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        newQuestion(questionTextView, answerButtons);
+                        newQuestion(questionTextView, answerButtons, scoreTextView);
                         dialog.dismiss();
                         isPaused=false;
                         createTimer();
@@ -152,14 +155,15 @@ public class PlayActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
-    public void correctDialog(final TextView questionTextView, final Button[] answerButtons){
+    public void correctDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
+        score++;
         AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
         alertDialog.setTitle("Correct!");
         alertDialog.setMessage("Right answer!!");
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Next Question",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        newQuestion(questionTextView, answerButtons);
+                        newQuestion(questionTextView, answerButtons, scoreTextView);
                         dialog.dismiss();
                         isPaused=false;
                         createTimer();
@@ -181,7 +185,7 @@ public class PlayActivity extends AppCompatActivity {
         new CountDownTimer(resumeFromMillis, 10) {
 
             public void onTick(long millisUntilFinished) {
-                timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
+                timerTextView.setText("Seconds Remaining: " + millisUntilFinished / 1000);
                 if(isPaused){
                     resumeFromMillis=millisUntilFinished;
                     cancel();
