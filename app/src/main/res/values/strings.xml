@@ -2,13 +2,13 @@
     <string name="app_name">Poker Quizzer</string>
     <string name="correct_answer">Correct!</string>
     <string name="incorrect_answer">Incorrect</string>
+    <string name="blank"></string>
 
     <string-array name="question_array">
-        <item>This is question 1</item>
+        <item>What is the highest card </item>
         <item>This is question 2</item>
         <item>This is question 3</item>
     </string-array>
-
 
     <array name = "answers">
         <item>@array/questionOneAnswers</item>
@@ -16,12 +16,12 @@
         <item>@array/questionThreeAnswers</item>
     </array>
 
-        <string-array name = "questionOneAnswers">
-            <item>1Correct!</item>
-            <item>1Wrong!</item>
-            <item>1Wrong!</item>
-            <item>1Wrong!</item>
-        </string-array>
+        <integer-array name = "questionOneAnswers">
+            <item>@drawable/da</item>
+            <item>@drawable/sk</item>
+            <item>@drawable/cq</item>
+            <item>@drawable/ht</item>
+        </integer-array>
         <string-array name = "questionTwoAnswers">
             <item>2Correct!</item>
             <item>2Wrong!</item>

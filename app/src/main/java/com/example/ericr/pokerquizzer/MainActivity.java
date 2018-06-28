@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button playGameBtn = (Button) findViewById(R.id.playGameBtn);
-        //playGameBtn.setBackgroundColor(Color.TRANSPARENT);//this is  a test
+        playGameBtn.setBackgroundColor(Color.TRANSPARENT);//this is  a test
 
         playGameBtn.setOnClickListener(new View.OnClickListener() {
             @Override

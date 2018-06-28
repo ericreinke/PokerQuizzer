@@ -5,11 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.media.Image;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -35,6 +38,10 @@ public class PlayActivity extends AppCompatActivity {
         Button secondAnswerBtn = findViewById(R.id.secondAnswerBtn);
         Button thirdAnswerBtn = findViewById(R.id.thirdAnswerBtn);
         Button fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
+        firstAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
+        secondAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
+        thirdAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
+        fourthAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
         final Button[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
 
         createTimer();//creates timer
@@ -72,16 +79,22 @@ public class PlayActivity extends AppCompatActivity {
         scoreTextView.setText("Score: "+score);
         Resources res = getResources();
         Random random = new Random();
-        int randomQuestion = random.nextInt(3);//number is the number of questions and should probably not be hard coded
+        int randomQuestion = 0;//random.nextInt(3);//number is the number of questions and should probably not be hard coded
+
         //declare question array and answer array
         TypedArray answerResources = res.obtainTypedArray(R.array.answers);
-        int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the nth string array
+        int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
         answerResources.recycle();//free
         //if (resId < 0) {QUESTION DOES NOT EXIST.  CHECK strings.xml OR RNG}
-        String [] questionAnswers = res.getStringArray(resId);
+        int [] questionAnswers = res.getIntArray(resId);
         String[] questions = res.getStringArray(R.array.question_array);
         String[] whyArray = res.getStringArray(R.array.why_answers);
         final String whyAnswer=whyArray[randomQuestion];
+
+        ImageView firstAnswerImg = findViewById(R.id.imageAnswer1);
+        ImageView secondAnswerImg= findViewById(R.id.imageAnswer2);
+        ImageView thirdAnswerImg = findViewById(R.id.imageAnswer3);
+        ImageView fourthAnswerImg= findViewById(R.id.imageAnswer4);
 
         //shuffle the four answers:
         int correctIndex=0;
@@ -93,17 +106,29 @@ public class PlayActivity extends AppCompatActivity {
             else if(randomShuffle==correctIndex){
                 correctIndex=i;
             }
-            String hold=questionAnswers[i];//quick lil swapperoo
+            int hold=questionAnswers[i];//quick lil swapperoo
             questionAnswers[i]=questionAnswers[randomShuffle];
             questionAnswers[randomShuffle]=hold;
         }
+//====================TEST SECTION
+        TypedArray hardCode = getResources().obtainTypedArray(R.array.questionOneAnswers);
+        int resId2 = hardCode.getResourceId(0,-1);
+        hardCode.recycle();
+        firstAnswerImg.setImageResource(resId2);
 
+//====================
         //set the question and the buttons to the randomQuestion
         questionTextView.setText(questions[randomQuestion]);
-        answerButtons[0].setText(questionAnswers[0]);
-        answerButtons[1].setText(questionAnswers[1]);
-        answerButtons[2].setText(questionAnswers[2]);
-        answerButtons[3].setText(questionAnswers[3]);
+
+        //firstAnswerImg .setImageResource(questionAnswers[0]);
+        //secondAnswerImg.setImageResource(questionAnswers[1]);
+        //thirdAnswerImg .setImageResource(questionAnswers[2]);
+        //fourthAnswerImg.setImageResource(questionAnswers[3]);
+
+        answerButtons[0].setText(R.string.blank);
+        answerButtons[1].setText(R.string.blank);
+        answerButtons[2].setText(R.string.blank);
+        answerButtons[3].setText(R.string.blank);
 
         for (int i = 0; i < 4; i++) {
             final int j = i;
