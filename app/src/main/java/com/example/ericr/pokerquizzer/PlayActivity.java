@@ -27,7 +27,6 @@ public class PlayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
-        Resources res = getResources();
 
         //declare buttons and textView
         final TextView questionTextView = findViewById(R.id.questionTextView);
@@ -38,12 +37,8 @@ public class PlayActivity extends AppCompatActivity {
         Button fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
         final Button[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
 
-
         createTimer();//creates timer
         newQuestion(questionTextView,answerButtons,scoreTextView);//CREATES A NEW QUESTION, mutates correctIndex (0-3);
-
-
-
 
     }
 
@@ -136,6 +131,8 @@ public class PlayActivity extends AppCompatActivity {
     }
     public void questionDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView,boolean correct, final String whyAnswer){
         AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.setCancelable(false);
         if(correct){
             alertDialog.setMessage(getString(R.string.correct_answer));
             score++;
@@ -176,8 +173,8 @@ public class PlayActivity extends AppCompatActivity {
             public void onFinish() {
                 timerTextView.setText("Done!");
                 cancel();
-                finish();
                 //start gameOverActivity
+                finish();
             }
         }.start();
     }
@@ -185,6 +182,8 @@ public class PlayActivity extends AppCompatActivity {
         //dont forget to change isPaused=false and call creatTimer();
         //android.os.SystemClock.sleep(750);
         AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.setCancelable(false);
         alertDialog.setMessage(whyAnswer);
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Next Question",
                 new DialogInterface.OnClickListener() {

@@ -3,6 +3,7 @@ package com.example.ericr.pokerquizzer;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button playGameBtn = (Button) findViewById(R.id.playGameBtn);
+        //playGameBtn.setBackgroundColor(Color.TRANSPARENT);//this is  a test
 
         playGameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
