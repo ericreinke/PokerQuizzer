@@ -85,6 +85,8 @@ public class PlayActivity extends AppCompatActivity {
         //if (resId < 0) {QUESTION DOES NOT EXIST.  CHECK strings.xml OR RNG}
         String [] questionAnswers = res.getStringArray(resId);
         String[] questions = res.getStringArray(R.array.question_array);
+        String[] whyArray = res.getStringArray(R.array.why_answers);
+        final String whyAnswer=whyArray[randomQuestion];
 
         //shuffle the four answers:
         int correctIndex=0;
@@ -115,7 +117,7 @@ public class PlayActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         isPaused=true;
-                        wrongDialog(questionTextView, answerButtons,scoreTextView);
+                        questionDialog(questionTextView, answerButtons,scoreTextView,false,whyAnswer);
                     }
                 });
             }
@@ -124,7 +126,7 @@ public class PlayActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         isPaused=true;
-                        correctDialog(questionTextView,answerButtons,scoreTextView);
+                        questionDialog(questionTextView,answerButtons,scoreTextView,true, whyAnswer);
                     }
                 });
             }
@@ -132,10 +134,15 @@ public class PlayActivity extends AppCompatActivity {
         }
 
     }
-    public void wrongDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
+    public void questionDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView,boolean correct, final String whyAnswer){
         AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
-        alertDialog.setTitle("Oops!");
-        alertDialog.setMessage("Wrong answer!!");
+        if(correct){
+            alertDialog.setMessage(getString(R.string.correct_answer));
+            score++;
+        }
+        else{
+            alertDialog.setMessage(getString(R.string.incorrect_answer));
+        }
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Next Question",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -148,33 +155,8 @@ public class PlayActivity extends AppCompatActivity {
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Why?",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent start = new Intent(PlayActivity.this, MainActivity.class);//TODO: goes to WhyActivity
-                        startActivity(start);
-                        finish();
-                    }
-                });
-        alertDialog.show();
-    }
-    public void correctDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
-        score++;
-        AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
-        alertDialog.setTitle("Correct!");
-        alertDialog.setMessage("Right answer!!");
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Next Question",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        newQuestion(questionTextView, answerButtons, scoreTextView);
                         dialog.dismiss();
-                        isPaused=false;
-                        createTimer();
-                    }
-                });
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Why?",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent start = new Intent(PlayActivity.this, MainActivity.class);//TODO: goes to WhyActivity
-                        startActivity(start);
-                        finish();
+                        whyDialog(questionTextView, answerButtons,scoreTextView,whyAnswer);
                     }
                 });
         alertDialog.show();
@@ -198,6 +180,22 @@ public class PlayActivity extends AppCompatActivity {
                 //start gameOverActivity
             }
         }.start();
+    }
+    public void whyDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView, final String whyAnswer){
+        //dont forget to change isPaused=false and call creatTimer();
+        //android.os.SystemClock.sleep(750);
+        AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
+        alertDialog.setMessage(whyAnswer);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Next Question",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        newQuestion(questionTextView, answerButtons, scoreTextView);
+                        dialog.dismiss();
+                        isPaused=false;
+                        createTimer();
+                    }
+                });
+        alertDialog.show();
     }
 
 }

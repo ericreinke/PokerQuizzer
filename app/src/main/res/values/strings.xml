@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Poker Quizzer</string>
+    <string name="correct_answer">Correct!</string>
+    <string name="incorrect_answer">Incorrect</string>
+
     <string-array name="question_array">
         <item>This is question 1</item>
         <item>This is question 2</item>
@@ -31,5 +34,11 @@
             <item>3Wrong!</item>
             <item>3Wrong!</item>
         </string-array>
+
+    <array name = "why_answers">
+        <item>this is the reason for question 1</item>
+        <item>this is the reason for question 2</item>
+        <item>this is the reason for question 3</item>
+    </array>
 
 </resources>
