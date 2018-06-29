@@ -10,6 +10,10 @@
         <item>This is question 3</item>
     </string-array>
 
+    <integer-array name="answerType"><!--1 means 1 drawable. 2 means 2 drawables. 3 means button text-->
+        <item>1</item>
+        <item>3</item>
+    </integer-array>
     <array name = "answers">
         <item>@array/questionOneAnswers</item>
         <item>@array/questionTwoAnswers</item>

@@ -22,7 +22,10 @@ import org.w3c.dom.Text;
 import java.util.Random;
 import java.util.Timer;
 
+import static android.view.View.GONE;
+
 public class PlayActivity extends AppCompatActivity {
+
     private boolean isPaused=false;
     private int correctIndex=0;
     private long resumeFromMillis = 30000; //timer starts at 30 seconds
@@ -36,15 +39,18 @@ public class PlayActivity extends AppCompatActivity {
         //declare buttons and textView
         final TextView questionTextView = findViewById(R.id.questionTextView);
         final TextView scoreTextView = findViewById(R.id.scoreTextView);
+
         Button firstAnswerBtn = findViewById(R.id.firstAnswerBtn);
         Button secondAnswerBtn = findViewById(R.id.secondAnswerBtn);
         Button thirdAnswerBtn = findViewById(R.id.thirdAnswerBtn);
         Button fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
+
         firstAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
         secondAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
         thirdAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
         fourthAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
         final Button[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
+
 
         createTimer();//creates timer
         newQuestion(questionTextView,answerButtons,scoreTextView);//CREATES A NEW QUESTION, mutates correctIndex (0-3);
@@ -54,7 +60,6 @@ public class PlayActivity extends AppCompatActivity {
     //===========================
     public void onBackPressed() {
         backButtonOverride();
-
     }
     public void backButtonOverride(){
         AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
@@ -77,29 +82,52 @@ public class PlayActivity extends AppCompatActivity {
         alertDialog.show();
 
     }
-    @SuppressLint("ResourceType")
     public void newQuestion(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
         scoreTextView.setText("Score: "+score);
         Resources res = getResources();
         Random random = new Random();
-        int randomQuestion = 0;//random.nextInt(3);//number is the number of questions and should probably not be hard coded
-
-//declare question array and answer array
-        TypedArray answerResources = res.obtainTypedArray(R.array.answers);
-        int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
-        answerResources.recycle();//free
-        TypedArray questionAnswers = res.obtainTypedArray(resId);
-        Drawable[] drawableArray = {questionAnswers.getDrawable(0),questionAnswers.getDrawable(1),questionAnswers.getDrawable(2),questionAnswers.getDrawable(3)};
-        questionAnswers.recycle();
-
-        String[] questions = res.getStringArray(R.array.question_array);
-        String[] whyArray = res.getStringArray(R.array.why_answers);
-        final String whyAnswer=whyArray[randomQuestion];
+        int randomQuestion = random.nextInt(2);//number is the number of questions and should probably not be hard coded
 
         ImageView firstAnswerImg = findViewById(R.id.imageAnswer1);
         ImageView secondAnswerImg= findViewById(R.id.imageAnswer2);
         ImageView thirdAnswerImg = findViewById(R.id.imageAnswer3);
         ImageView fourthAnswerImg= findViewById(R.id.imageAnswer4);
+        final ImageView[] imageAnswers={firstAnswerImg,secondAnswerImg,thirdAnswerImg,fourthAnswerImg};
+        for(int i=0; i<4; i++){
+            imageAnswers[i].setVisibility(View.VISIBLE);
+
+        }
+
+
+//declare question array and answer array
+        int questionType=res.getIntArray(R.array.answerType)[randomQuestion];
+        Drawable[] drawableArray = new Drawable[4];
+        Drawable[] drawableArray2= new Drawable[4];
+        String [] buttonText = new String[4];
+
+        if(questionType==1){
+            drawableArray=retrieveTypeOne(randomQuestion);
+            buttonText = returnBlankStrings();
+        }
+        else if(questionType==2){
+            Drawable[]temp= retrieveTypeTwo(randomQuestion);
+            buttonText = returnBlankStrings();
+            for(int i=0;i<8;i++){
+                if(i<4){
+                    drawableArray[i]=temp[i];
+                }
+                else{
+                    drawableArray2[i-4]=temp[i];
+                }
+            }
+        }
+        else if(questionType==3){
+            buttonText=retrieveTypeThree(randomQuestion);
+        }
+
+        String[] questions = res.getStringArray(R.array.question_array);
+        final String whyAnswer=res.getStringArray(R.array.why_answers)[randomQuestion];
+
 
 //shuffle the four answers:
         int correctIndex=0;
@@ -119,15 +147,13 @@ public class PlayActivity extends AppCompatActivity {
 //set the question and the buttons to the randomQuestion
         questionTextView.setText(questions[randomQuestion]);
 
-        firstAnswerImg .setImageDrawable(drawableArray[0]);
-        secondAnswerImg.setImageDrawable(drawableArray[1]);
-        thirdAnswerImg .setImageDrawable(drawableArray[2]);
-        fourthAnswerImg.setImageDrawable(drawableArray[3]);
-
-        answerButtons[0].setText(R.string.blank);
-        answerButtons[1].setText(R.string.blank);
-        answerButtons[2].setText(R.string.blank);
-        answerButtons[3].setText(R.string.blank);
+        for(int i=0; i<4; i++){
+            imageAnswers[i].setImageDrawable(drawableArray[i]);
+            if(questionType==3){
+                imageAnswers[i].setVisibility(GONE);
+            }
+            answerButtons[i].setText(buttonText[i]);
+        }
 
 //click listseners
         for (int i = 0; i < 4; i++) {
@@ -221,5 +247,51 @@ public class PlayActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
+    public Drawable[] retrieveTypeOne(int randomQuestion){
+        Resources res= getResources();
+        TypedArray answerResources = res.obtainTypedArray(R.array.answers);
+        int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
+        answerResources.recycle();//free
+        TypedArray questionAnswers = res.obtainTypedArray(resId);//this is for a specific answer
+        Drawable[] drawableArray = new Drawable[4];
 
+        for(int i=0; i<4; i++){
+            drawableArray[i]=questionAnswers.getDrawable(i);
+        }
+        questionAnswers.recycle();//free
+        return drawableArray;
+    }
+    public Drawable[] retrieveTypeTwo(int randomQuestion){//returns an array with 8 drawables.  These drawables are split up after this fucktion call
+        Resources res = getResources();
+
+        TypedArray answerResources = res.obtainTypedArray(R.array.answers);
+        int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
+        answerResources.recycle();//free
+        TypedArray questionAnswers = res.obtainTypedArray(resId);//this is for a specific answer
+        @SuppressLint("ResourceType")
+        Drawable[] drawableArray = new Drawable[8];
+
+        for(int i=0; i<8; i++){
+            drawableArray[i]=questionAnswers.getDrawable(i);
+        }
+
+        questionAnswers.recycle();//free
+        return drawableArray;
+    }
+    public String[] retrieveTypeThree (int randomQuestion){
+
+        Resources res = getResources();
+        TypedArray answerResources = res.obtainTypedArray(R.array.answers);
+        int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
+        answerResources.recycle();//free
+        String[] buttonText = res.getStringArray(resId);//this is for a specific answer
+        return buttonText;
+    }
+    public String[] returnBlankStrings(){
+        String[] blanks=new String[4];
+        for(int i=0; i<4; i++){
+            blanks[i]=getResources().getString(R.string.blank);
+        }
+        return blanks;
+    }
 }
