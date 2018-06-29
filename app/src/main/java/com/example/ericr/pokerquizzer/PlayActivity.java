@@ -1,11 +1,13 @@
 package com.example.ericr.pokerquizzer;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -75,18 +77,21 @@ public class PlayActivity extends AppCompatActivity {
         alertDialog.show();
 
     }
+    @SuppressLint("ResourceType")
     public void newQuestion(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
         scoreTextView.setText("Score: "+score);
         Resources res = getResources();
         Random random = new Random();
         int randomQuestion = 0;//random.nextInt(3);//number is the number of questions and should probably not be hard coded
 
-        //declare question array and answer array
+//declare question array and answer array
         TypedArray answerResources = res.obtainTypedArray(R.array.answers);
         int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
         answerResources.recycle();//free
-        //if (resId < 0) {QUESTION DOES NOT EXIST.  CHECK strings.xml OR RNG}
-        int [] questionAnswers = res.getIntArray(resId);
+        TypedArray questionAnswers = res.obtainTypedArray(resId);
+        Drawable[] drawableArray = {questionAnswers.getDrawable(0),questionAnswers.getDrawable(1),questionAnswers.getDrawable(2),questionAnswers.getDrawable(3)};
+        questionAnswers.recycle();
+
         String[] questions = res.getStringArray(R.array.question_array);
         String[] whyArray = res.getStringArray(R.array.why_answers);
         final String whyAnswer=whyArray[randomQuestion];
@@ -96,7 +101,7 @@ public class PlayActivity extends AppCompatActivity {
         ImageView thirdAnswerImg = findViewById(R.id.imageAnswer3);
         ImageView fourthAnswerImg= findViewById(R.id.imageAnswer4);
 
-        //shuffle the four answers:
+//shuffle the four answers:
         int correctIndex=0;
         for(int i=0; i<4; i++){
             int randomShuffle = random.nextInt(4);
@@ -106,30 +111,25 @@ public class PlayActivity extends AppCompatActivity {
             else if(randomShuffle==correctIndex){
                 correctIndex=i;
             }
-            int hold=questionAnswers[i];//quick lil swapperoo
-            questionAnswers[i]=questionAnswers[randomShuffle];
-            questionAnswers[randomShuffle]=hold;
+            Drawable hold= drawableArray[i];//quick lil swapperoo
+            drawableArray[i]=drawableArray[randomShuffle];
+            drawableArray[randomShuffle]=hold;
         }
-//====================TEST SECTION
-        TypedArray hardCode = getResources().obtainTypedArray(R.array.questionOneAnswers);
-        int resId2 = hardCode.getResourceId(0,-1);
-        hardCode.recycle();
-        firstAnswerImg.setImageResource(resId2);
 
-//====================
-        //set the question and the buttons to the randomQuestion
+//set the question and the buttons to the randomQuestion
         questionTextView.setText(questions[randomQuestion]);
 
-        //firstAnswerImg .setImageResource(questionAnswers[0]);
-        //secondAnswerImg.setImageResource(questionAnswers[1]);
-        //thirdAnswerImg .setImageResource(questionAnswers[2]);
-        //fourthAnswerImg.setImageResource(questionAnswers[3]);
+        firstAnswerImg .setImageDrawable(drawableArray[0]);
+        secondAnswerImg.setImageDrawable(drawableArray[1]);
+        thirdAnswerImg .setImageDrawable(drawableArray[2]);
+        fourthAnswerImg.setImageDrawable(drawableArray[3]);
 
         answerButtons[0].setText(R.string.blank);
         answerButtons[1].setText(R.string.blank);
         answerButtons[2].setText(R.string.blank);
         answerButtons[3].setText(R.string.blank);
 
+//click listseners
         for (int i = 0; i < 4; i++) {
             final int j = i;
             if (j != correctIndex) {
