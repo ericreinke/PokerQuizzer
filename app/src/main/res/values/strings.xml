@@ -6,13 +6,15 @@
 
     <string-array name="question_array">
         <item>What is the highest card </item>
-        <item>This is question 2</item>
+        <item>How many playing cards are in a deck</item>
         <item>This is question 3</item>
     </string-array>
 
     <integer-array name="answerType"><!--1 means 1 drawable. 2 means 2 drawables. 3 means button text-->
         <item>1</item>
         <item>3</item>
+        <item>3</item>
+
     </integer-array>
     <array name = "answers">
         <item>@array/questionOneAnswers</item>
@@ -27,10 +29,10 @@
             <item>@drawable/ht</item>
         </integer-array>
         <string-array name = "questionTwoAnswers">
-            <item>2Correct!</item>
-            <item>2Wrong!</item>
-            <item>2Wrong!</item>
-            <item>2Wrong!</item>
+            <item>52</item>
+            <item>26</item>
+            <item>48</item>
+            <item>13</item>
         </string-array>
         <string-array name = "questionThreeAnswers">
             <item>3Correct!</item>

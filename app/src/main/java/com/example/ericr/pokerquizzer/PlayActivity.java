@@ -129,7 +129,7 @@ public class PlayActivity extends AppCompatActivity {
         final String whyAnswer=res.getStringArray(R.array.why_answers)[randomQuestion];
 
 
-//shuffle the four answers:
+//shuffle the four answers:TODO: There is an error somewhere here.  drawables are shuffling but somehow the correct index is getting mixed up.
         int correctIndex=0;
         for(int i=0; i<4; i++){
             int randomShuffle = random.nextInt(4);
@@ -142,10 +142,13 @@ public class PlayActivity extends AppCompatActivity {
             Drawable hold= drawableArray[i];//quick lil swapperoo
             drawableArray[i]=drawableArray[randomShuffle];
             drawableArray[randomShuffle]=hold;
+            String holdS = buttonText[i];//shuffle the button text too
+            buttonText[i]=buttonText[randomShuffle];
+            buttonText[randomShuffle]=holdS;
         }
 
 //set the question and the buttons to the randomQuestion
-        questionTextView.setText(questions[randomQuestion]);
+        questionTextView.setText(questions[randomQuestion]+"correct index is: "+correctIndex);
 
         for(int i=0; i<4; i++){
             imageAnswers[i].setImageDrawable(drawableArray[i]);
