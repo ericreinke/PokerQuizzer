@@ -44,12 +44,10 @@ public class PlayActivity extends AppCompatActivity {
         Button secondAnswerBtn = findViewById(R.id.secondAnswerBtn);
         Button thirdAnswerBtn = findViewById(R.id.thirdAnswerBtn);
         Button fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
-
-        firstAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
-        secondAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
-        thirdAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
-        fourthAnswerBtn.setBackgroundColor(Color.TRANSPARENT);
         final Button[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
+        for(int i=0; i<4; i++){
+            answerButtons[i].setBackgroundColor(Color.TRANSPARENT);//from #D7D7D7
+        }
 
 
         createTimer();//creates timer
@@ -63,15 +61,8 @@ public class PlayActivity extends AppCompatActivity {
     }
     public void backButtonOverride(){
         AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
-        alertDialog.setTitle("!");
-        alertDialog.setMessage("Return to Main Menu?");
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Cancel",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Ok",
+        alertDialog.setTitle("Return to Main Menu?");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent start = new Intent(PlayActivity.this, MainActivity.class);
@@ -79,23 +70,46 @@ public class PlayActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         alertDialog.show();
 
     }
     public void newQuestion(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
+        for(int i=0; i<4; i++){
+            answerButtons[i].setBackgroundColor(Color.TRANSPARENT);
+        }
+
         scoreTextView.setText("Score: "+score);
         Resources res = getResources();
         Random random = new Random();
-        int randomQuestion = random.nextInt(2);//number is the number of questions and should probably not be hard coded
+        int randomQuestion = random.nextInt(3);//number is the number of questions and should probably not be hard coded
 
         ImageView firstAnswerImg = findViewById(R.id.imageAnswer1);
         ImageView secondAnswerImg= findViewById(R.id.imageAnswer2);
         ImageView thirdAnswerImg = findViewById(R.id.imageAnswer3);
         ImageView fourthAnswerImg= findViewById(R.id.imageAnswer4);
         final ImageView[] imageAnswers={firstAnswerImg,secondAnswerImg,thirdAnswerImg,fourthAnswerImg};
+
+        ImageView answerImg11 = findViewById(R.id.imageAnswer11);
+        ImageView answerImg12 = findViewById(R.id.imageAnswer12);
+        ImageView answerImg21 = findViewById(R.id.imageAnswer21);
+        ImageView answerImg22 = findViewById(R.id.imageAnswer22);
+        ImageView answerImg31 = findViewById(R.id.imageAnswer31);
+        ImageView answerImg32 = findViewById(R.id.imageAnswer32);
+        ImageView answerImg41 = findViewById(R.id.imageAnswer41);
+        ImageView answerImg42 = findViewById(R.id.imageAnswer42);
+        final ImageView[] imageAnswers2 = {answerImg11,answerImg21, answerImg31, answerImg41, answerImg12, answerImg22, answerImg32, answerImg42};
+
         for(int i=0; i<4; i++){
             imageAnswers[i].setVisibility(View.VISIBLE);
-
+        }
+        for(int i=0; i<8; i++){
+            imageAnswers2[i].setVisibility(View.VISIBLE);
         }
 
 
@@ -112,16 +126,16 @@ public class PlayActivity extends AppCompatActivity {
         else if(questionType==2){
             Drawable[]temp= retrieveTypeTwo(randomQuestion);
             buttonText = returnBlankStrings();
-            for(int i=0;i<8;i++){
-                if(i<4){
-                    drawableArray[i]=temp[i];
-                }
-                else{
-                    drawableArray2[i-4]=temp[i];
-                }
+            for(int i=0;i<8;i+=2){
+                drawableArray[i/2]=temp[i];
+                drawableArray2[i/2]=temp[i+1];
+
             }
         }
         else if(questionType==3){
+            for(int i=0; i<4; i++){
+                answerButtons[i].setBackgroundColor(Color.parseColor("#D7D7D7"));
+            }
             buttonText=retrieveTypeThree(randomQuestion);
         }
 
@@ -139,21 +153,32 @@ public class PlayActivity extends AppCompatActivity {
             else if(randomShuffle==correctIndex){
                 correctIndex=i;
             }
-            Drawable hold= drawableArray[i];//quick lil swapperoo
+            Drawable hold= drawableArray[i]; // shuffle the first array
             drawableArray[i]=drawableArray[randomShuffle];
             drawableArray[randomShuffle]=hold;
+
+            Drawable hold2 = drawableArray2[i]; //shuffle the second array
+            drawableArray2[i]=drawableArray2[randomShuffle];
+            drawableArray2[randomShuffle]=hold2;
+
             String holdS = buttonText[i];//shuffle the button text too
             buttonText[i]=buttonText[randomShuffle];
             buttonText[randomShuffle]=holdS;
         }
 
 //set the question and the buttons to the randomQuestion
-        questionTextView.setText(questions[randomQuestion]+"correct index is: "+correctIndex);
+        questionTextView.setText(questions[randomQuestion]+" correct index is: "+correctIndex);
 
         for(int i=0; i<4; i++){
             imageAnswers[i].setImageDrawable(drawableArray[i]);
-            if(questionType==3){
+            imageAnswers2[i].setImageDrawable(drawableArray[i]);
+            imageAnswers2[i+4].setImageDrawable(drawableArray2[i]);
+            if(questionType!=1){
                 imageAnswers[i].setVisibility(GONE);
+            }
+            if(questionType!=2){
+                imageAnswers2[i].setVisibility(GONE);
+                imageAnswers2[i+4].setVisibility(GONE);
             }
             answerButtons[i].setText(buttonText[i]);
         }
@@ -181,6 +206,7 @@ public class PlayActivity extends AppCompatActivity {
             }
 
         }
+
 
     }
     public void questionDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView,boolean correct, final String whyAnswer){
