@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void backButtonOverride(){
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-        alertDialog.setTitle("!");
-        alertDialog.setMessage("Quit?");
+        alertDialog.setTitle("Quit?");
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Cancel",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

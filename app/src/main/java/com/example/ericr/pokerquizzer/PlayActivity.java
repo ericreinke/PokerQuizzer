@@ -143,7 +143,7 @@ public class PlayActivity extends AppCompatActivity {
         final String whyAnswer=res.getStringArray(R.array.why_answers)[randomQuestion];
 
 
-//shuffle the four answers:TODO: There is an error somewhere here.  drawables are shuffling but somehow the correct index is getting mixed up.
+//shuffle the four answers:
         int correctIndex=0;
         for(int i=0; i<4; i++){
             int randomShuffle = random.nextInt(4);
