@@ -35,18 +35,18 @@ public class MainActivity extends AppCompatActivity {
     public void backButtonOverride(){
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("Quit?");
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Cancel",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Ok",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
+            new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
+            new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
         alertDialog.show();
 
     }

@@ -14,41 +14,81 @@
         <item>1</item>
         <item>3</item>
         <item>2</item>
-
     </integer-array>
-    <array name = "answers">
-        <item>@array/questionOneAnswers</item>
-        <item>@array/questionTwoAnswers</item>
-        <item>@array/questionThreeAnswers</item>
+
+    <array name = "why_answers">
+        <item>this is the reason for question 1</item>
+        <item>this is the reason for question 2</item>
+        <item>Ace Queen has a straight, Ten to Ace, and beats 3 of a kind</item>
     </array>
 
-        <integer-array name = "questionOneAnswers">
+    <array name = "community">
+        <item>@array/q1c</item>
+        <item>@array/q2c</item>
+        <item>@array/q3c</item>
+    </array>
+        <integer-array name="q1c">
+            <item>@drawable/blue_back</item>
+            <item>@drawable/blue_back</item>
+            <item>@drawable/red_back</item>
+            <item>@drawable/red_back</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+        </integer-array>
+        <integer-array name="q2c">
+            <item>@drawable/blue_back</item>
+            <item>@drawable/blue_back</item>
+            <item>@drawable/red_back</item>
+            <item>@drawable/red_back</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+        </integer-array>
+        <integer-array name="q3c">
+            <item>@drawable/blue_back</item>
+            <item>@drawable/blue_back</item>
+            <item>@drawable/red_back</item>
+            <item>@drawable/red_back</item>
+            <item>@drawable/sk</item>
+            <item>@drawable/c2</item>
+            <item>@drawable/sj</item>
+            <item>@drawable/dt</item>
+            <item>@drawable/d9</item>
+        </integer-array>
+
+
+    <array name = "answers">
+        <item>@array/q1a</item>
+        <item>@array/q2a</item>
+        <item>@array/q3a</item>
+    </array>
+
+        <integer-array name = "q1a">
             <item>@drawable/da</item>
             <item>@drawable/sk</item>
             <item>@drawable/cq</item>
             <item>@drawable/ht</item>
         </integer-array>
-        <string-array name = "questionTwoAnswers">
+        <string-array name = "q2a">
             <item>52</item>
             <item>26</item>
             <item>48</item>
             <item>13</item>
         </string-array>
-        <string-array name = "questionThreeAnswers">
-            <item>@drawable/dk</item>
-            <item>@drawable/ck</item>
+        <string-array name = "q3a">
             <item>@drawable/ha</item>
             <item>@drawable/sq</item>
+            <item>@drawable/dk</item>
+            <item>@drawable/ck</item>
             <item>@drawable/d2</item>
             <item>@drawable/h2</item>
             <item>@drawable/s9</item>
             <item>@drawable/c9</item>
         </string-array>
-
-    <array name = "why_answers">
-        <item>this is the reason for question 1</item>
-        <item>this is the reason for question 2</item>
-        <item>this is the reason for question 3</item>
-    </array>
 
 </resources>

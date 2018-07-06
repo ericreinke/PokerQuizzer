@@ -89,6 +89,17 @@ public class PlayActivity extends AppCompatActivity {
         Random random = new Random();
         int randomQuestion = random.nextInt(3);//number is the number of questions and should probably not be hard coded
 
+        ImageView hero1Img = findViewById(R.id.hero1);
+        ImageView hero2Img = findViewById(R.id.hero2);
+        ImageView villain1Img = findViewById(R.id.villain1);
+        ImageView villain2Img = findViewById(R.id.villain2);
+        ImageView flop1Img = findViewById(R.id.firstFlop);
+        ImageView flop2Img = findViewById(R.id.secondFlop);
+        ImageView flop3Img = findViewById(R.id.thirdFlop);
+        ImageView turnImg = findViewById(R.id.turn);
+        ImageView riverImg = findViewById(R.id.river);
+        final ImageView[] community = {hero1Img, hero2Img, villain1Img, villain2Img, flop1Img, flop2Img, flop3Img, turnImg, riverImg};
+
         ImageView firstAnswerImg = findViewById(R.id.imageAnswer1);
         ImageView secondAnswerImg= findViewById(R.id.imageAnswer2);
         ImageView thirdAnswerImg = findViewById(R.id.imageAnswer3);
@@ -118,6 +129,7 @@ public class PlayActivity extends AppCompatActivity {
         Drawable[] drawableArray = new Drawable[4];
         Drawable[] drawableArray2= new Drawable[4];
         String [] buttonText = new String[4];
+        Drawable[] drawableCommunity = retrieveCommunity(randomQuestion);
 
         if(questionType==1){
             drawableArray=retrieveTypeOne(randomQuestion);
@@ -181,6 +193,10 @@ public class PlayActivity extends AppCompatActivity {
                 imageAnswers2[i+4].setVisibility(GONE);
             }
             answerButtons[i].setText(buttonText[i]);
+        }
+        //draw the community cards
+        for(int i=0; i<9; i++){
+            community[i].setImageDrawable(drawableCommunity[i]);
         }
 
 //click listseners
@@ -292,12 +308,10 @@ public class PlayActivity extends AppCompatActivity {
     }
     public Drawable[] retrieveTypeTwo(int randomQuestion){//returns an array with 8 drawables.  These drawables are split up after this fucktion call
         Resources res = getResources();
-
         TypedArray answerResources = res.obtainTypedArray(R.array.answers);
         int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
         answerResources.recycle();//free
         TypedArray questionAnswers = res.obtainTypedArray(resId);//this is for a specific answer
-        @SuppressLint("ResourceType")
         Drawable[] drawableArray = new Drawable[8];
 
         for(int i=0; i<8; i++){
@@ -315,6 +329,22 @@ public class PlayActivity extends AppCompatActivity {
         answerResources.recycle();//free
         String[] buttonText = res.getStringArray(resId);//this is for a specific answer
         return buttonText;
+    }
+    public Drawable [] retrieveCommunity (int randomQuestion){
+        Resources res = getResources();
+        TypedArray communityResources = res.obtainTypedArray(R.array.community);
+        int resId = communityResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
+        communityResources.recycle();//free
+        TypedArray communityCards = res.obtainTypedArray(resId);//this is for a specific answer
+        Drawable[] drawableArray = new Drawable[9];
+
+        for(int i=0; i<9; i++){
+            drawableArray[i]=communityCards.getDrawable(i);
+        }
+
+        communityCards.recycle();//free
+
+        return drawableArray;
     }
     public String[] returnBlankStrings(){
         String[] blanks=new String[4];
