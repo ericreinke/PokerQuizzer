@@ -82,7 +82,7 @@ public class PlayActivity extends AppCompatActivity {
     }
     public void newQuestion(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
         for(int i=0; i<4; i++){
-            answerButtons[i].setBackgroundColor(Color.parseColor("#D7D7D7"));
+            answerButtons[i].setBackgroundColor(Color.TRANSPARENT);
         }
 
         scoreTextView.setText("Score: "+score);
@@ -227,16 +227,18 @@ public class PlayActivity extends AppCompatActivity {
 
     }
     public void questionDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView,boolean correct, final String whyAnswer){
-        AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
-        alertDialog.setCanceledOnTouchOutside(false);
-        alertDialog.setCancelable(false);
+        AlertDialog alertDialog;
         if(correct){
+            alertDialog = new AlertDialog.Builder(PlayActivity.this,R.style.AlertDialogStyleCorrect).create();
             alertDialog.setMessage(getString(R.string.correct_answer));
             score++;
         }
         else{
+            alertDialog = new AlertDialog.Builder(PlayActivity.this,R.style.AlertDialogStyleIncorrect).create();
             alertDialog.setMessage(getString(R.string.incorrect_answer));
         }
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.setCancelable(false);
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Next Question",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
