@@ -175,7 +175,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>Ace Queen has a straight, Ten to Ace, and beats 3 of a kind</item>
         <item>Pocket tens can hit more straights than pocket queens, and matched suited cards will
         still lose when they hit a flush</item>
-        <item>You can hit two 9's, three Q's, and three K's for a full house.
+        <item>You can hit two 9s, three Qs, and three Ks for a full house.
         the ace or 9 of spaces will give the Villain a straight flush</item>
         <item>A straight flush beats straights, flushes and quads</item>
     </array>
