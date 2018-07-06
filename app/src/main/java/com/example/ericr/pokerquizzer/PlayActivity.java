@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.CountDownTimer;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -81,7 +82,7 @@ public class PlayActivity extends AppCompatActivity {
     }
     public void newQuestion(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
         for(int i=0; i<4; i++){
-            answerButtons[i].setBackgroundColor(Color.TRANSPARENT);
+            answerButtons[i].setBackgroundColor(Color.parseColor("#D7D7D7"));
         }
 
         scoreTextView.setText("Score: "+score);
@@ -179,7 +180,7 @@ public class PlayActivity extends AppCompatActivity {
         }
 
 //set the question and the buttons to the randomQuestion
-        questionTextView.setText(questions[randomQuestion]+" correct index is: "+correctIndex);
+        questionTextView.setText(questions[randomQuestion]);//+" correct index is: "+correctIndex);
 
         for(int i=0; i<4; i++){
             imageAnswers[i].setImageDrawable(drawableArray[i]);
