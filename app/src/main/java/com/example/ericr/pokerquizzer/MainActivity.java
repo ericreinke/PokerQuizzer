@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         return;
     }
     public void backButtonOverride(){
-        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this,R.style.AlertDialogStyleNeutral).create();
         alertDialog.setTitle("Quit?");
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
             new DialogInterface.OnClickListener() {

@@ -10,13 +10,14 @@
 
     <TextView
         android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="236dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="Poker Quizzer"
         android:textSize="30sp"
         android:textStyle="bold|italic"
+        android:gravity="center"
         app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintBottom_toTopOf="@+id/playGameBtn"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -273,15 +273,29 @@ public class PlayActivity extends AppCompatActivity {
             public void onFinish() {
                 timerTextView.setText("Done!");
                 cancel();
+
+                AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this,R.style.AlertDialogStyleNeutral).create();
+                alertDialog.setCanceledOnTouchOutside(false);
+                alertDialog.setCancelable(false);
+                alertDialog.setTitle("GAME OVER");
+                alertDialog.setMessage("You got "+score+" questions correct");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Main Menu",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent start = new Intent(PlayActivity.this, MainActivity.class);
+                                startActivity(start);
+                                finish();
+                            }
+                        });
+                alertDialog.show();
                 //start gameOverActivity
-                finish();
             }
         }.start();
     }
     public void whyDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView, final String whyAnswer){
         //dont forget to change isPaused=false and call creatTimer();
         //android.os.SystemClock.sleep(750);
-        AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this,R.style.AlertDialogStyleNeutral).create();
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.setCancelable(false);
         alertDialog.setMessage(whyAnswer);
