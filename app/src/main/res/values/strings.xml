@@ -1,3 +1,16 @@
+<!--README!!:
+To add a question, there are 6 (SIX!!!!!!)things you must add:
+===================================================
+1. question_array : Add the actual question
+2. answerType : Add the type of question (1 drawable, text, etc...)
+3. qXc : a new integer array where X is the next number question.
+    Contains 9 drawable "community" cards
+4. community : add the just created qXc to the community array
+5. qXa : a new [string/integer]-array containing 4, drawables, 8 drawables, or 4 strings. Where X is the next
+    numbered questionThe answer to the question is the first index (or first 2 indexes, in case of type 2)
+6. answers : add the just created qXa to the answers array
+-->
+
 <resources>
     <string name="app_name">Poker Quizzer</string>
     <string name="correct_answer">Correct!</string>
@@ -8,25 +21,62 @@
         <item>What is the highest card </item>
         <item>How many playing cards are in a deck</item>
         <item>What is the best hand</item>
+        <item>You are both all in.  What hand would you rather have?</item>
+        <item>How many outs do you have?</item>
+        <item>What is the nuts?</item>
     </string-array>
 
     <integer-array name="answerType"><!--1 means 1 drawable. 2 means 2 drawables. 3 means button text-->
         <item>1</item>
         <item>3</item>
         <item>2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>2</item>
     </integer-array>
-
-    <array name = "why_answers">
-        <item>this is the reason for question 1</item>
-        <item>this is the reason for question 2</item>
-        <item>Ace Queen has a straight, Ten to Ace, and beats 3 of a kind</item>
-    </array>
 
     <array name = "community">
         <item>@array/q1c</item>
         <item>@array/q2c</item>
         <item>@array/q3c</item>
+        <item>@array/q4c</item>
+        <item>@array/q5c</item>
+        <item>@array/q6c</item>
     </array>
+    <!--Community order is: Hero1, hero2, villain1, villain2, flop,flop,flop,turn,river-->
+        <integer-array name="q6c">
+            <item>@drawable/blue_back</item>
+            <item>@drawable/blue_back</item>
+            <item>@drawable/red_back</item>
+            <item>@drawable/red_back</item>
+            <item>@drawable/ha</item>
+            <item>@drawable/h5</item>
+            <item>@drawable/c5</item>
+            <item>@drawable/ca</item>
+            <item>@drawable/h4</item>
+        </integer-array>
+        <integer-array name="q5c">
+            <item>@drawable/ca</item>
+            <item>@drawable/ha</item>
+            <item>@drawable/sj</item>
+            <item>@drawable/st</item>
+            <item>@drawable/da</item>
+            <item>@drawable/sq</item>
+            <item>@drawable/sk</item>
+            <item>@drawable/d9</item>
+            <item>@drawable/yellow_back</item>
+        </integer-array>
+        <integer-array name="q4c">
+            <item>@drawable/blue_back</item>
+            <item>@drawable/blue_back</item>
+            <item>@drawable/ca</item>
+            <item>@drawable/ha</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+            <item>@drawable/yellow_back</item>
+        </integer-array>
         <integer-array name="q1c">
             <item>@drawable/blue_back</item>
             <item>@drawable/blue_back</item>
@@ -66,8 +116,36 @@
         <item>@array/q1a</item>
         <item>@array/q2a</item>
         <item>@array/q3a</item>
+        <item>@array/q4a</item>
+        <item>@array/q5a</item>
+        <item>@array/q6a</item>
     </array>
-
+        <string-array name = "q6a">
+            <item>@drawable/h2</item>
+            <item>@drawable/h3</item>
+            <item>@drawable/da</item>
+            <item>@drawable/sa</item>
+            <item>@drawable/d5</item>
+            <item>@drawable/s5</item>
+            <item>@drawable/c2</item>
+            <item>@drawable/c3</item>
+        </string-array>
+        <string-array name = "q5a">
+            <item>8</item>
+            <item>7</item>
+            <item>9</item>
+            <item>0</item>
+        </string-array>
+        <string-array name = "q4a">
+            <item>@drawable/st</item>
+            <item>@drawable/dt</item>
+            <item>@drawable/ct</item>
+            <item>@drawable/ht</item>
+            <item>@drawable/cq</item>
+            <item>@drawable/hq</item>
+            <item>@drawable/sq</item>
+            <item>@drawable/dq</item>
+        </string-array>
         <integer-array name = "q1a">
             <item>@drawable/da</item>
             <item>@drawable/sk</item>
@@ -91,4 +169,14 @@
             <item>@drawable/c9</item>
         </string-array>
 
+    <array name = "why_answers">
+        <item>An Ace is the highest card in the deck</item>
+        <item>A standard deck of playing cards has 52 cards</item>
+        <item>Ace Queen has a straight, Ten to Ace, and beats 3 of a kind</item>
+        <item>Pocket tens can hit more straights than pocket queens, and matched suited cards will
+        still lose when they hit a flush</item>
+        <item>You can hit two 9's, three Q's, and three K's for a full house.
+        the ace or 9 of spaces will give the Villain a straight flush</item>
+        <item>A straight flush beats straights, flushes and quads</item>
+    </array>
 </resources>

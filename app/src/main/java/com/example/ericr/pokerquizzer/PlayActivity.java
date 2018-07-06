@@ -89,7 +89,7 @@ public class PlayActivity extends AppCompatActivity {
         scoreTextView.setText("Score: "+score);
         Resources res = getResources();
         Random random = new Random();
-        int randomQuestion = random.nextInt(3);//number is the number of questions and should probably not be hard coded
+        int randomQuestion = random.nextInt(6);//number is the number of questions and should probably not be hard coded
 
         ImageView hero1Img = findViewById(R.id.hero1);
         ImageView hero2Img = findViewById(R.id.hero2);
