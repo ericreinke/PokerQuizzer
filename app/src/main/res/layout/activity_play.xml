@@ -256,7 +256,7 @@
 
     <TextView
         android:id="@+id/questionTextView"
-        android:layout_width="259dp"
+        android:layout_width="303dp"
         android:layout_height="58dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -264,8 +264,10 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:gravity="center"
         android:text="question_placeholder"
-        android:gravity= "center"
+        android:textSize="18sp"
+        app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintBottom_toTopOf="@+id/hero2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -281,6 +283,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="32dp"
         android:text="Answer 1"
+        app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintBottom_toTopOf="@+id/thirdAnswerBtn"
         app:layout_constraintEnd_toStartOf="@+id/secondAnswerBtn"
         app:layout_constraintHorizontal_bias="0.5"
@@ -298,6 +301,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="Answer 2"
+        app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintBottom_toTopOf="@+id/fourthAnswerBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -314,6 +318,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:text="Answer 3"
+        app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fourthAnswerBtn"
         app:layout_constraintHorizontal_bias="0.5"
@@ -330,6 +335,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Answer 4"
+        app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -346,6 +352,8 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
         android:text="timer_placeholder"
+        android:textSize="18sp"
+        app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -357,6 +365,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="score_placeholder"
+        android:textSize="18sp"
+        app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -438,6 +448,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Hero"
+        android:textSize="18sp"
+        app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintEnd_toEndOf="@+id/hero2"
         app:layout_constraintStart_toStartOf="@+id/hero1"
         app:layout_constraintTop_toBottomOf="@+id/hero1" />
@@ -452,6 +464,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Villain"
+        android:textSize="18sp"
+        app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintEnd_toEndOf="@+id/villain2"
         app:layout_constraintStart_toStartOf="@+id/villain1"
         app:layout_constraintTop_toBottomOf="@+id/villain1" />
