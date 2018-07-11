@@ -22,7 +22,8 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>How many playing cards are in a deck</item>
         <item>What is the best hand</item>
         <item>You are both all in.  What hand would you rather have?</item>
-        <item>How many outs do you have?</item>
+        <item>How many outs do you have?</item> <!-- 5 -->
+        <item>What is the nuts?</item>
         <item>What is the nuts?</item>
     </string-array>
 
@@ -31,7 +32,9 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>3</item>
         <item>2</item>
         <item>2</item>
-        <item>3</item>
+        <item>3</item><!-- 5 -->
+        <item>2</item>
+        <item>2</item>
         <item>2</item>
     </integer-array>
 
@@ -42,8 +45,22 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@array/q4c</item>
         <item>@array/q5c</item>
         <item>@array/q6c</item>
+        <item>@array/q7c</item>
     </array>
     <!--Community order is: Hero1, hero2, villain1, villain2, flop,flop,flop,turn,river-->
+
+
+        <integer-array name="q7c">
+            <item>@drawable/blue_back</item>
+            <item>@drawable/blue_back</item>
+            <item>@drawable/red_back</item>
+            <item>@drawable/red_back</item>
+            <item>@drawable/ck</item>
+            <item>@drawable/dq</item>
+            <item>@drawable/s8</item>
+            <item>@drawable/s5</item>
+            <item>@drawable/h2</item>
+        </integer-array>
         <integer-array name="q6c">
             <item>@drawable/blue_back</item>
             <item>@drawable/blue_back</item>
@@ -64,40 +81,40 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
             <item>@drawable/sq</item>
             <item>@drawable/sk</item>
             <item>@drawable/d9</item>
-            <item>@drawable/yellow_back</item>
+            <item>@drawable/gray_back</item>
         </integer-array>
         <integer-array name="q4c">
             <item>@drawable/blue_back</item>
             <item>@drawable/blue_back</item>
             <item>@drawable/ca</item>
             <item>@drawable/ha</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
         </integer-array>
         <integer-array name="q1c">
             <item>@drawable/blue_back</item>
             <item>@drawable/blue_back</item>
             <item>@drawable/red_back</item>
             <item>@drawable/red_back</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
         </integer-array>
         <integer-array name="q2c">
             <item>@drawable/blue_back</item>
             <item>@drawable/blue_back</item>
             <item>@drawable/red_back</item>
             <item>@drawable/red_back</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
-            <item>@drawable/yellow_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
+            <item>@drawable/gray_back</item>
         </integer-array>
         <integer-array name="q3c">
             <item>@drawable/blue_back</item>
@@ -119,7 +136,18 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@array/q4a</item>
         <item>@array/q5a</item>
         <item>@array/q6a</item>
+        <item>@array/q7a</item>
     </array>
+        <string-array name = "q7a">
+            <item>@drawable/dk</item>
+            <item>@drawable/sk</item>
+            <item>@drawable/sa</item>
+            <item>@drawable/sq</item>
+            <item>@drawable/dj</item>
+            <item>@drawable/ct</item>
+            <item>@drawable/da</item>
+            <item>@drawable/ha</item>
+        </string-array>
         <string-array name = "q6a">
             <item>@drawable/h2</item>
             <item>@drawable/h3</item>
@@ -178,5 +206,6 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>You can hit two 9s, three Qs, and three Ks for a full house.
         the ace or 9 of spaces will give the Villain a straight flush</item>
         <item>A straight flush beats straights, flushes and quads</item>
+        <item>A set is is the highest possible hand on this board</item>
     </array>
 </resources>
