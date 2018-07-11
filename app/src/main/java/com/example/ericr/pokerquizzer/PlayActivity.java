@@ -86,19 +86,21 @@ public class PlayActivity extends AppCompatActivity {
         for(int i=0; i<4; i++){
             answerButtons[i].setBackgroundColor(Color.TRANSPARENT);
         }
-
         scoreTextView.setText("Score: "+score);
+
         Resources res = getResources();
+        TypedArray answerResources = res.obtainTypedArray(R.array.question_array);
+
         Random random = new Random();
         int randomQuestion=-1;
         //this loop simulates a stack with array "history"
         for(;;){
-            randomQuestion = random.nextInt(7);//number is the number of questions and should probably not be hard coded
-            if(!inHistory(randomQuestion)){
+            randomQuestion = random.nextInt(answerResources.length());
+            if(!inHistory(randomQuestion )){
                 for(int i=0; i<4; i++){
                     history[i]=history[i+1];
                 }
-                history[5]=randomQuestion;
+                history[4]=randomQuestion;
                 break;
             }
         }
