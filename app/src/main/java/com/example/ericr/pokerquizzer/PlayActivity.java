@@ -102,7 +102,7 @@ public class PlayActivity extends AppCompatActivity {
                 break;
             }
         }
-        
+
 
         ImageView hero1Img = findViewById(R.id.hero1);
         ImageView hero2Img = findViewById(R.id.hero2);
