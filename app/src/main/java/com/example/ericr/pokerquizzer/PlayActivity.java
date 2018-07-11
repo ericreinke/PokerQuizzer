@@ -32,6 +32,7 @@ public class PlayActivity extends AppCompatActivity {
     private int correctIndex=0;
     private long resumeFromMillis = 30000; //timer starts at 30 seconds
     private int score = 0;
+    private int[] history = {-1,-1,-1,-1,-1};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +90,19 @@ public class PlayActivity extends AppCompatActivity {
         scoreTextView.setText("Score: "+score);
         Resources res = getResources();
         Random random = new Random();
-        int randomQuestion = random.nextInt(6);//number is the number of questions and should probably not be hard coded
+        int randomQuestion=-1;
+        //this loop simulates a stack with array "history"
+        for(;;){
+            randomQuestion = random.nextInt(7);//number is the number of questions and should probably not be hard coded
+            if(!inHistory(randomQuestion)){
+                for(int i=0; i<4; i++){
+                    history[i]=history[i+1];
+                }
+                history[5]=randomQuestion;
+                break;
+            }
+        }
+        
 
         ImageView hero1Img = findViewById(R.id.hero1);
         ImageView hero2Img = findViewById(R.id.hero2);
@@ -370,5 +383,15 @@ public class PlayActivity extends AppCompatActivity {
             blanks[i]=getResources().getString(R.string.blank);
         }
         return blanks;
+    }
+    public boolean inHistory(int random){
+        boolean found =false;
+        for(int i=0; i<5; i++){
+            if(random==history[i]){
+                found = true;
+                break;
+            }
+        }
+        return found;
     }
 }
