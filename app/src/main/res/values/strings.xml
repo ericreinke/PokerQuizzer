@@ -25,7 +25,13 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>How many outs do you have?</item> <!-- 5 -->
         <item>What is the nuts?</item>
         <item>What is the nuts?</item>
+        <item>What is the nuts?</item>
+        <item>What is the nuts?</item>
+        <item>What is the nuts?</item> <!-- 10 -->
+        <item>What is the nuts?</item>
     </string-array>
+
+    <!-- ============================== -->
 
     <integer-array name="answerType"><!--1 means 1 drawable. 2 means 2 drawables. 3 means button text-->
         <item>1</item>
@@ -36,7 +42,12 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>2</item>
         <item>2</item>
         <item>2</item>
+        <item>2</item>
+        <item>2</item><!-- 10 -->
+        <item>2</item>
     </integer-array>
+
+    <!-- ============================== -->
 
     <array name = "community">
         <item>@array/q1c</item>
@@ -46,88 +57,137 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@array/q5c</item>
         <item>@array/q6c</item>
         <item>@array/q7c</item>
+        <item>@array/q8c</item>
+        <item>@array/q9c</item>
+        <item>@array/q10c</item>
+        <item>@array/q11c</item>
+
     </array>
     <!--Community order is: Hero1, hero2, villain1, villain2, flop,flop,flop,turn,river-->
 
+    <integer-array name="q11c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/h7</item>
+        <item>@drawable/ht</item>
+        <item>@drawable/ha</item>
+        <item>@drawable/c7</item>
+        <item>@drawable/s5</item>
+    </integer-array>
+    <integer-array name="q10c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/h4</item>
+        <item>@drawable/dk</item>
+        <item>@drawable/s4</item>
+        <item>@drawable/cj</item>
+        <item>@drawable/hj</item>
+    </integer-array>
+    <integer-array name="q9c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/h4</item>
+        <item>@drawable/h9</item>
+        <item>@drawable/d8</item>
+        <item>@drawable/hq</item>
+        <item>@drawable/h8</item>
+    </integer-array>
+    <integer-array name="q8c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/c9</item>
+        <item>@drawable/d3</item>
+        <item>@drawable/h6</item>
+        <item>@drawable/c8</item>
+        <item>@drawable/dj</item>
+    </integer-array>
+    <integer-array name="q7c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/ck</item>
+        <item>@drawable/dq</item>
+        <item>@drawable/s8</item>
+        <item>@drawable/s5</item>
+        <item>@drawable/h2</item>
+    </integer-array>
+    <integer-array name="q6c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/ha</item>
+        <item>@drawable/h5</item>
+        <item>@drawable/c5</item>
+        <item>@drawable/ca</item>
+        <item>@drawable/h4</item>
+    </integer-array>
+    <integer-array name="q5c">
+        <item>@drawable/ca</item>
+        <item>@drawable/ha</item>
+        <item>@drawable/sj</item>
+        <item>@drawable/st</item>
+        <item>@drawable/da</item>
+        <item>@drawable/sq</item>
+        <item>@drawable/sk</item>
+        <item>@drawable/d9</item>
+        <item>@drawable/gray_back</item>
+    </integer-array>
+    <integer-array name="q4c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/ca</item>
+        <item>@drawable/ha</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+    </integer-array>
+    <integer-array name="q1c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+    </integer-array>
+    <integer-array name="q2c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+    </integer-array>
+    <integer-array name="q3c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/red_back</item>
+        <item>@drawable/sk</item>
+        <item>@drawable/c2</item>
+        <item>@drawable/sj</item>
+        <item>@drawable/dt</item>
+        <item>@drawable/d9</item>
+    </integer-array>
 
-        <integer-array name="q7c">
-            <item>@drawable/blue_back</item>
-            <item>@drawable/blue_back</item>
-            <item>@drawable/red_back</item>
-            <item>@drawable/red_back</item>
-            <item>@drawable/ck</item>
-            <item>@drawable/dq</item>
-            <item>@drawable/s8</item>
-            <item>@drawable/s5</item>
-            <item>@drawable/h2</item>
-        </integer-array>
-        <integer-array name="q6c">
-            <item>@drawable/blue_back</item>
-            <item>@drawable/blue_back</item>
-            <item>@drawable/red_back</item>
-            <item>@drawable/red_back</item>
-            <item>@drawable/ha</item>
-            <item>@drawable/h5</item>
-            <item>@drawable/c5</item>
-            <item>@drawable/ca</item>
-            <item>@drawable/h4</item>
-        </integer-array>
-        <integer-array name="q5c">
-            <item>@drawable/ca</item>
-            <item>@drawable/ha</item>
-            <item>@drawable/sj</item>
-            <item>@drawable/st</item>
-            <item>@drawable/da</item>
-            <item>@drawable/sq</item>
-            <item>@drawable/sk</item>
-            <item>@drawable/d9</item>
-            <item>@drawable/gray_back</item>
-        </integer-array>
-        <integer-array name="q4c">
-            <item>@drawable/blue_back</item>
-            <item>@drawable/blue_back</item>
-            <item>@drawable/ca</item>
-            <item>@drawable/ha</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-        </integer-array>
-        <integer-array name="q1c">
-            <item>@drawable/blue_back</item>
-            <item>@drawable/blue_back</item>
-            <item>@drawable/red_back</item>
-            <item>@drawable/red_back</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-        </integer-array>
-        <integer-array name="q2c">
-            <item>@drawable/blue_back</item>
-            <item>@drawable/blue_back</item>
-            <item>@drawable/red_back</item>
-            <item>@drawable/red_back</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-            <item>@drawable/gray_back</item>
-        </integer-array>
-        <integer-array name="q3c">
-            <item>@drawable/blue_back</item>
-            <item>@drawable/blue_back</item>
-            <item>@drawable/red_back</item>
-            <item>@drawable/red_back</item>
-            <item>@drawable/sk</item>
-            <item>@drawable/c2</item>
-            <item>@drawable/sj</item>
-            <item>@drawable/dt</item>
-            <item>@drawable/d9</item>
-        </integer-array>
-
+    <!-- ============================== -->
 
     <array name = "answers">
         <item>@array/q1a</item>
@@ -137,65 +197,111 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@array/q5a</item>
         <item>@array/q6a</item>
         <item>@array/q7a</item>
+        <item>@array/q8a</item>
+        <item>@array/q9a</item>
+        <item>@array/q10a</item>
+        <item>@array/q11a</item>
     </array>
-        <string-array name = "q7a">
-            <item>@drawable/dk</item>
-            <item>@drawable/sk</item>
-            <item>@drawable/sa</item>
-            <item>@drawable/sq</item>
-            <item>@drawable/dj</item>
-            <item>@drawable/ct</item>
-            <item>@drawable/da</item>
-            <item>@drawable/ha</item>
-        </string-array>
-        <string-array name = "q6a">
-            <item>@drawable/h2</item>
-            <item>@drawable/h3</item>
-            <item>@drawable/da</item>
-            <item>@drawable/sa</item>
-            <item>@drawable/d5</item>
-            <item>@drawable/s5</item>
-            <item>@drawable/c2</item>
-            <item>@drawable/c3</item>
-        </string-array>
-        <string-array name = "q5a">
-            <item>8</item>
-            <item>7</item>
-            <item>9</item>
-            <item>0</item>
-        </string-array>
-        <string-array name = "q4a">
-            <item>@drawable/st</item>
-            <item>@drawable/dt</item>
-            <item>@drawable/ct</item>
-            <item>@drawable/ht</item>
-            <item>@drawable/cq</item>
-            <item>@drawable/hq</item>
-            <item>@drawable/sq</item>
-            <item>@drawable/dq</item>
-        </string-array>
-        <integer-array name = "q1a">
-            <item>@drawable/da</item>
-            <item>@drawable/sk</item>
-            <item>@drawable/cq</item>
-            <item>@drawable/ht</item>
-        </integer-array>
-        <string-array name = "q2a">
-            <item>52</item>
-            <item>26</item>
-            <item>48</item>
-            <item>13</item>
-        </string-array>
-        <string-array name = "q3a">
-            <item>@drawable/ha</item>
-            <item>@drawable/sq</item>
-            <item>@drawable/dk</item>
-            <item>@drawable/ck</item>
-            <item>@drawable/d2</item>
-            <item>@drawable/h2</item>
-            <item>@drawable/s9</item>
-            <item>@drawable/c9</item>
-        </string-array>
+    <string-array name = "q11a">
+        <item>@drawable/s7</item>
+        <item>@drawable/d7</item>
+        <item>@drawable/hk</item>
+        <item>@drawable/hq</item>
+        <item>@drawable/sa</item>
+        <item>@drawable/s7</item>
+        <item>@drawable/c5</item>
+        <item>@drawable/d5</item>
+    </string-array>
+    <string-array name = "q10a">
+        <item>@drawable/sj</item>
+        <item>@drawable/dj</item>
+        <item>@drawable/d4</item>
+        <item>@drawable/c4</item>
+        <item>@drawable/sk</item>
+        <item>@drawable/hk</item>
+        <item>@drawable/dj</item>
+        <item>@drawable/d4</item>
+    </string-array>
+    <string-array name = "q9a">
+        <item>@drawable/hj</item>
+        <item>@drawable/ht</item>
+        <item>@drawable/s8</item>
+        <item>@drawable/c8</item>
+        <item>@drawable/ha</item>
+        <item>@drawable/hk</item>
+        <item>@drawable/h5</item>
+        <item>@drawable/h6</item>
+    </string-array>
+    <string-array name = "q8a">
+        <item>@drawable/sq</item>
+        <item>@drawable/ht</item>
+        <item>@drawable/ht</item>
+        <item>@drawable/d7</item>
+        <item>@drawable/d5</item>
+        <item>@drawable/h7</item>
+        <item>@drawable/cj</item>
+        <item>@drawable/sj</item>
+    </string-array>
+    <string-array name = "q7a">
+        <item>@drawable/dk</item>
+        <item>@drawable/sk</item>
+        <item>@drawable/sa</item>
+        <item>@drawable/sq</item>
+        <item>@drawable/dj</item>
+        <item>@drawable/ct</item>
+        <item>@drawable/da</item>
+        <item>@drawable/ha</item>
+    </string-array>
+    <string-array name = "q6a">
+        <item>@drawable/h2</item>
+        <item>@drawable/h3</item>
+        <item>@drawable/da</item>
+        <item>@drawable/sa</item>
+        <item>@drawable/d5</item>
+        <item>@drawable/s5</item>
+        <item>@drawable/c2</item>
+        <item>@drawable/c3</item>
+    </string-array>
+    <string-array name = "q5a">
+        <item>8</item>
+        <item>7</item>
+        <item>9</item>
+        <item>0</item>
+    </string-array>
+    <string-array name = "q4a">
+        <item>@drawable/st</item>
+        <item>@drawable/dt</item>
+        <item>@drawable/ct</item>
+        <item>@drawable/ht</item>
+        <item>@drawable/cq</item>
+        <item>@drawable/hq</item>
+        <item>@drawable/sq</item>
+        <item>@drawable/dq</item>
+    </string-array>
+    <integer-array name = "q1a">
+        <item>@drawable/da</item>
+        <item>@drawable/sk</item>
+        <item>@drawable/cq</item>
+        <item>@drawable/ht</item>
+    </integer-array>
+    <string-array name = "q2a">
+        <item>52</item>
+        <item>26</item>
+        <item>48</item>
+        <item>13</item>
+    </string-array>
+    <string-array name = "q3a">
+        <item>@drawable/ha</item>
+        <item>@drawable/sq</item>
+        <item>@drawable/dk</item>
+        <item>@drawable/ck</item>
+        <item>@drawable/d2</item>
+        <item>@drawable/h2</item>
+        <item>@drawable/s9</item>
+        <item>@drawable/c9</item>
+    </string-array>
+
+    <!-- ============================== -->
 
     <array name = "why_answers">
         <item>An Ace is the highest card in the deck</item>
@@ -207,5 +313,9 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         the ace or 9 of spaces will give the Villain a straight flush</item>
         <item>A straight flush beats straights, flushes and quads</item>
         <item>A set is is the highest possible hand on this board</item>
+        <item>A queen high straight is the best possible hand on this board</item>
+        <item>A queen high straight flush is the best possible hand on this board</item>
+        <item>Quad jacks is the best possible hand on this board</item><!-- 10 -->
+        <item>Quad 7s is the best possible hand on this board</item>
     </array>
 </resources>
