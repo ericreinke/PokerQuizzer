@@ -29,6 +29,11 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>What is the nuts?</item>
         <item>What is the nuts?</item> <!-- 10 -->
         <item>What is the nuts?</item>
+        <item>You are both all in.  What hand would you rather have?</item>
+        <item>You are both all in.  What hand would you rather have?</item>
+        <item>You are both all in.  What hand would you rather have?</item>
+        <item>You are both all in.  What hand would you rather have (to WIN the pot)?</item> <!-- 15 -->
+
     </string-array>
 
     <!-- ============================== -->
@@ -45,6 +50,10 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>2</item>
         <item>2</item><!-- 10 -->
         <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item><!-- 15 -->
     </integer-array>
 
     <!-- ============================== -->
@@ -61,10 +70,58 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@array/q9c</item>
         <item>@array/q10c</item>
         <item>@array/q11c</item>
+        <item>@array/q12c</item>
+        <item>@array/q13c</item>
+        <item>@array/q14c</item>
+        <item>@array/q15c</item>
 
     </array>
     <!--Community order is: Hero1, hero2, villain1, villain2, flop,flop,flop,turn,river-->
 
+    <integer-array name="q15c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/dj</item>
+        <item>@drawable/s8</item>
+        <item>@drawable/hj</item>
+        <item>@drawable/s3</item>
+        <item>@drawable/cj</item>
+        <item>@drawable/dk</item>
+        <item>@drawable/gray_back</item>
+    </integer-array>
+    <integer-array name="q14c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/cj</item>
+        <item>@drawable/c8</item>
+        <item>@drawable/ct</item>
+        <item>@drawable/h9</item>
+        <item>@drawable/c2</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+    </integer-array>
+    <integer-array name="q13c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/ha</item>
+        <item>@drawable/da</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+    </integer-array>
+    <integer-array name="q12c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/sa</item>
+        <item>@drawable/da</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+    </integer-array>
     <integer-array name="q11c">
         <item>@drawable/blue_back</item>
         <item>@drawable/blue_back</item>
@@ -201,7 +258,53 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@array/q9a</item>
         <item>@array/q10a</item>
         <item>@array/q11a</item>
+        <item>@array/q12a</item>
+        <item>@array/q13a</item>
+        <item>@array/q14a</item>
+        <item>@array/q15a</item>
     </array>
+
+
+    <string-array name = "q15a">
+        <item>@drawable/h3</item>
+        <item>@drawable/c3</item>
+        <item>@drawable/sj</item>
+        <item>@drawable/d3</item>
+        <item>@drawable/hq</item>
+        <item>@drawable/ht</item>
+        <item>@drawable/sa</item>
+        <item>@drawable/sj</item>
+    </string-array>
+    <string-array name = "q14a">
+        <item>@drawable/hk</item>
+        <item>@drawable/ck</item>
+        <item>@drawable/ha</item>
+        <item>@drawable/ca</item>
+        <item>@drawable/ht</item>
+        <item>@drawable/d2</item>
+        <item>@drawable/h7</item>
+        <item>@drawable/c7</item>
+    </string-array>
+    <string-array name = "q13a">
+        <item>@drawable/s5</item>
+        <item>@drawable/s6</item>
+        <item>@drawable/c9</item>
+        <item>@drawable/ht</item>
+        <item>@drawable/c6</item>
+        <item>@drawable/s6</item>
+        <item>@drawable/ht</item>
+        <item>@drawable/dt</item>
+    </string-array>
+    <string-array name = "q12a">
+        <item>@drawable/c6</item>
+        <item>@drawable/h6</item>
+        <item>@drawable/ck</item>
+        <item>@drawable/hk</item>
+        <item>@drawable/ct</item>
+        <item>@drawable/ht</item>
+        <item>@drawable/c2</item>
+        <item>@drawable/h2</item>
+    </string-array>
     <string-array name = "q11a">
         <item>@drawable/s7</item>
         <item>@drawable/d7</item>
@@ -317,5 +420,12 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>A queen high straight flush is the best possible hand on this board</item>
         <item>Quad jacks is the best possible hand on this board</item><!-- 10 -->
         <item>Quad 7s is the best possible hand on this board</item>
+        <item>66 is the best choice of the hands given because they can hit more straights than
+        KK, TT and 22 (amongst other reasons)</item>
+        <item>56 suited is the is the second best starting hand against pocket aces (the first being the other two aces)</item>
+        <item>KhKc is ~1% (49.4%) better than AhAc (48.5%) because it still has outs if a queen completes villain's straight on turn.
+        Th2d has 48.1% and 7c7h has 36.2%</item>
+        <item>A full house of 3s full of Js will win more often than Js full of 3s (however Js full of 3s will also tie more).</item>
+
     </array>
 </resources>
