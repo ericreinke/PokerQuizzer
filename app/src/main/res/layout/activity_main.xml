@@ -40,6 +40,7 @@
         android:bottomLeftRadius="25dp"
         android:topLeftRadius="25dp"
         android:topRightRadius="25dp"
+        
         app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

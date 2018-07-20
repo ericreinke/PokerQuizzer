@@ -33,6 +33,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>You are both all in.  What hand would you rather have?</item>
         <item>You are both all in.  What hand would you rather have?</item>
         <item>You are both all in.  What hand would you rather have (to WIN the pot)?</item> <!-- 15 -->
+        <item>Your opponent has moved all in and the pot is now $100.  What is highest bet you should call?</item>
 
     </string-array>
 
@@ -54,6 +55,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>2</item>
         <item>2</item>
         <item>2</item><!-- 15 -->
+        <item>3</item>
     </integer-array>
 
     <!-- ============================== -->
@@ -74,10 +76,22 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@array/q13c</item>
         <item>@array/q14c</item>
         <item>@array/q15c</item>
+        <item>@array/q16c</item>
 
     </array>
     <!--Community order is: Hero1, hero2, villain1, villain2, flop,flop,flop,turn,river-->
 
+    <integer-array name="q16c">
+        <item>@drawable/ck</item>
+        <item>@drawable/dk</item>
+        <item>@drawable/ca</item>
+        <item>@drawable/da</item>
+        <item>@drawable/sa</item>
+        <item>@drawable/hk</item>
+        <item>@drawable/c9</item>
+        <item>@drawable/d2</item>
+        <item>@drawable/gray_back</item>
+    </integer-array>
     <integer-array name="q15c">
         <item>@drawable/blue_back</item>
         <item>@drawable/blue_back</item>
@@ -262,9 +276,15 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@array/q13a</item>
         <item>@array/q14a</item>
         <item>@array/q15a</item>
+        <item>@array/q16a</item>
     </array>
 
-
+    <string-array name = "q16a">
+        <item>$ 2</item>
+        <item>$ 3</item>
+        <item>$ 0</item>
+        <item>$ 98</item>
+    </string-array>
     <string-array name = "q15a">
         <item>@drawable/h3</item>
         <item>@drawable/c3</item>
@@ -426,6 +446,8 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>KhKc is ~1% (49.4%) better than AhAc (48.5%) because it still has outs if a queen completes villain's straight on turn.
         Th2d has 48.1% and 7c7h has 36.2%</item>
         <item>A full house of 3s full of Js will win more often than Js full of 3s (however Js full of 3s will also tie more).</item>
+        <item>You have around 2% chance of winning, or about 49:1.  If the bet is $2, you are getting 50:1 pot odds,
+        and if it is $3, you are getting 33:1 so you should call $2 but fold to $3 (If you know they have Aces)</item>
 
     </array>
 </resources>

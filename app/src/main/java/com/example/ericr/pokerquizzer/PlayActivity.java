@@ -57,7 +57,6 @@ public class PlayActivity extends AppCompatActivity {
         newQuestion(questionTextView,answerButtons,scoreTextView);//CREATES A NEW QUESTION, mutates correctIndex (0-3);
 
     }
-
     //===========================
     public void onBackPressed() {
         backButtonOverride();
@@ -104,6 +103,7 @@ public class PlayActivity extends AppCompatActivity {
                 break;
             }
         }
+        //randomQuestion=15;
 
 
         ImageView hero1Img = findViewById(R.id.hero1);
