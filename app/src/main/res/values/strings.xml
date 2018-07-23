@@ -16,6 +16,17 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
     <string name="correct_answer">Correct!</string>
     <string name="incorrect_answer">Incorrect</string>
     <string name="blank"></string>
+    <string name="next_question">Next Question</string>
+    <string name="seconds_remaing">Seconds Remaining</string>
+    <string name="game_over">Game Over</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="timer_over">Finish!</string>
+    <string name="why">Why?</string>
+    <string name="score">Score: </string>
+    <string name="return_main">Return to Main Menu?</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="button_color">#D7D7D7</string>
 
     <string-array name="question_array">
         <item>What is the highest card </item>

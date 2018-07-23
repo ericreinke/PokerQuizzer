@@ -63,8 +63,8 @@ public class PlayActivity extends AppCompatActivity {
     }
     public void backButtonOverride(){
         AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this).create();
-        alertDialog.setTitle("Return to Main Menu?");
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
+        alertDialog.setTitle(getString(R.string.return_main));
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,getString(R.string.ok),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent start = new Intent(PlayActivity.this, MainActivity.class);
@@ -72,7 +72,7 @@ public class PlayActivity extends AppCompatActivity {
                         finish();
                     }
                 });
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.cancel),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -85,13 +85,13 @@ public class PlayActivity extends AppCompatActivity {
         for(int i=0; i<4; i++){
             answerButtons[i].setBackgroundColor(Color.TRANSPARENT);
         }
-        scoreTextView.setText("Score: "+score);
+        scoreTextView.setText(getString(R.string.score)+score);
 
         Resources res = getResources();
         TypedArray answerResources = res.obtainTypedArray(R.array.question_array);
 
         Random random = new Random();
-        int randomQuestion=-1;
+        int randomQuestion;
         //this loop simulates a stack with array "history"
         for(;;){
             randomQuestion = random.nextInt(answerResources.length());
@@ -103,6 +103,7 @@ public class PlayActivity extends AppCompatActivity {
                 break;
             }
         }
+        answerResources.recycle();
         //randomQuestion=15;
 
 
@@ -163,7 +164,7 @@ public class PlayActivity extends AppCompatActivity {
         }
         else if(questionType==3){
             for(int i=0; i<4; i++){
-                answerButtons[i].setBackgroundColor(Color.parseColor("#D7D7D7"));
+                answerButtons[i].setBackgroundColor(Color.parseColor(getString(R.string.button_color)));
             }
             buttonText=retrieveTypeThree(randomQuestion);
         }
@@ -218,9 +219,9 @@ public class PlayActivity extends AppCompatActivity {
 
 //click listseners
         for (int i = 0; i < 4; i++) {
-            final int j = i;
-            if (j != correctIndex) {
-                answerButtons[j].setOnClickListener(new View.OnClickListener() {
+            //final int j = i;
+            if (i != correctIndex) {
+                answerButtons[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         isPaused=true;
@@ -229,7 +230,7 @@ public class PlayActivity extends AppCompatActivity {
                 });
             }
             else{
-                answerButtons[j].setOnClickListener(new View.OnClickListener() {
+                answerButtons[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         isPaused=true;
@@ -255,7 +256,7 @@ public class PlayActivity extends AppCompatActivity {
         }
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.setCancelable(false);
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Next Question",
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.next_question),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         newQuestion(questionTextView, answerButtons, scoreTextView);
@@ -264,7 +265,7 @@ public class PlayActivity extends AppCompatActivity {
                         createTimer();
                     }
                 });
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Why?",
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.why),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -279,22 +280,22 @@ public class PlayActivity extends AppCompatActivity {
         new CountDownTimer(resumeFromMillis, 10) {
 
             public void onTick(long millisUntilFinished) {
-                timerTextView.setText("Seconds Remaining: " + millisUntilFinished / 1000);
+                timerTextView.setText(getString(R.string.seconds_remaing) + millisUntilFinished / 1000);
                 if(isPaused){
                     resumeFromMillis=millisUntilFinished;
                     cancel();
                 }
             }
             public void onFinish() {
-                timerTextView.setText("Done!");
+                timerTextView.setText(getString(R.string.timer_over));
                 cancel();
 
                 AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this,R.style.AlertDialogStyleNeutral).create();
                 alertDialog.setCanceledOnTouchOutside(false);
                 alertDialog.setCancelable(false);
-                alertDialog.setTitle("GAME OVER");
+                alertDialog.setTitle(getString(R.string.game_over));
                 alertDialog.setMessage("You got "+score+" questions correct");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Main Menu",
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.main_menu),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent start = new Intent(PlayActivity.this, MainActivity.class);
@@ -314,7 +315,7 @@ public class PlayActivity extends AppCompatActivity {
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.setCancelable(false);
         alertDialog.setMessage(whyAnswer);
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Next Question",
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.next_question),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         newQuestion(questionTextView, answerButtons, scoreTextView);
