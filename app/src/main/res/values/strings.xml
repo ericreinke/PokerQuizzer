@@ -99,7 +99,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
 
     <!-- ============================== -->
 
-    <array name = "community">
+    <array name="community">
         <item>@array/q1c</item>
         <item>@array/q2c</item>
         <item>@array/q3c</item>
@@ -323,7 +323,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
 
     <!-- ============================== -->
 
-    <array name = "answers">
+    <array name="answers">
         <item>@array/q1a</item>
         <item>@array/q2a</item>
         <item>@array/q3a</item>
@@ -344,25 +344,25 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@array/q18a</item>
     </array>
 
-    <string-array name = "q18a">
+    <string-array name="q18a">
         <item>True</item>
         <item>False</item>
         <item>Depends on the suits</item>
         <item>Depends on the weather</item>
     </string-array>
-    <string-array name = "q17a">
+    <string-array name="q17a">
         <item>True</item>
         <item>False</item>
         <item>Depends on the suits</item>
         <item>Depends on the weather</item>
     </string-array>
-    <string-array name = "q16a">
+    <string-array name="q16a">
         <item>$ 2</item>
         <item>$ 3</item>
         <item>$ 0</item>
         <item>$ 98</item>
     </string-array>
-    <string-array name = "q15a">
+    <string-array name="q15a">
         <item>@drawable/h3</item>
         <item>@drawable/c3</item>
         <item>@drawable/sj</item>
@@ -372,7 +372,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@drawable/sa</item>
         <item>@drawable/sj</item>
     </string-array>
-    <string-array name = "q14a">
+    <string-array name="q14a">
         <item>@drawable/hk</item>
         <item>@drawable/ck</item>
         <item>@drawable/ha</item>
@@ -382,7 +382,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@drawable/h7</item>
         <item>@drawable/c7</item>
     </string-array>
-    <string-array name = "q13a">
+    <string-array name="q13a">
         <item>@drawable/s5</item>
         <item>@drawable/s6</item>
         <item>@drawable/c9</item>
@@ -392,7 +392,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@drawable/ht</item>
         <item>@drawable/dt</item>
     </string-array>
-    <string-array name = "q12a">
+    <string-array name="q12a">
         <item>@drawable/c6</item>
         <item>@drawable/h6</item>
         <item>@drawable/ck</item>
@@ -402,7 +402,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@drawable/c2</item>
         <item>@drawable/h2</item>
     </string-array>
-    <string-array name = "q11a">
+    <string-array name="q11a">
         <item>@drawable/s7</item>
         <item>@drawable/d7</item>
         <item>@drawable/hk</item>
@@ -412,7 +412,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@drawable/c5</item>
         <item>@drawable/d5</item>
     </string-array>
-    <string-array name = "q10a">
+    <string-array name="q10a">
         <item>@drawable/sj</item>
         <item>@drawable/dj</item>
         <item>@drawable/d4</item>
@@ -422,7 +422,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@drawable/dj</item>
         <item>@drawable/d4</item>
     </string-array>
-    <string-array name = "q9a">
+    <string-array name="q9a">
         <item>@drawable/hj</item>
         <item>@drawable/ht</item>
         <item>@drawable/s8</item>
@@ -432,7 +432,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@drawable/h5</item>
         <item>@drawable/h6</item>
     </string-array>
-    <string-array name = "q8a">
+    <string-array name="q8a">
         <item>@drawable/sq</item>
         <item>@drawable/ht</item>
         <item>@drawable/ht</item>
@@ -442,7 +442,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@drawable/cj</item>
         <item>@drawable/sj</item>
     </string-array>
-    <string-array name = "q7a">
+    <string-array name="q7a">
         <item>@drawable/dk</item>
         <item>@drawable/sk</item>
         <item>@drawable/sa</item>
@@ -452,7 +452,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@drawable/da</item>
         <item>@drawable/ha</item>
     </string-array>
-    <string-array name = "q6a">
+    <string-array name="q6a">
         <item>@drawable/h2</item>
         <item>@drawable/h3</item>
         <item>@drawable/da</item>
@@ -462,13 +462,13 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@drawable/c2</item>
         <item>@drawable/c3</item>
     </string-array>
-    <string-array name = "q5a">
+    <string-array name="q5a">
         <item>8</item>
         <item>7</item>
         <item>9</item>
         <item>0</item>
     </string-array>
-    <string-array name = "q4a">
+    <string-array name="q4a">
         <item>@drawable/st</item>
         <item>@drawable/dt</item>
         <item>@drawable/ct</item>
@@ -478,19 +478,19 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@drawable/sq</item>
         <item>@drawable/dq</item>
     </string-array>
-    <integer-array name = "q1a">
+    <integer-array name="q1a">
         <item>@drawable/da</item>
         <item>@drawable/sk</item>
         <item>@drawable/cq</item>
         <item>@drawable/ht</item>
     </integer-array>
-    <string-array name = "q2a">
+    <string-array name="q2a">
         <item>52</item>
         <item>26</item>
         <item>48</item>
         <item>13</item>
     </string-array>
-    <string-array name = "q3a">
+    <string-array name="q3a">
         <item>@drawable/ha</item>
         <item>@drawable/sq</item>
         <item>@drawable/dk</item>
@@ -503,14 +503,16 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
 
     <!-- ============================== -->
 
-    <array name = "why_answers">
+    <array name="why_answers">
         <item>An Ace is the highest card in the deck</item>
         <item>A standard deck of playing cards has 52 cards</item>
         <item>Ace Queen has a straight, Ten to Ace, and beats 3 of a kind</item>
         <item>Pocket tens can hit more straights than pocket queens, and matched suited cards will
-        still lose when they hit a flush</item>
+            still lose when they hit a flush
+        </item>
         <item>You can hit two 9s, three Qs, and three Ks for a full house.
-        the ace or 9 of spaces will give the Villain a straight flush</item>
+            the ace or 9 of spaces will give the Villain a straight flush
+        </item>
         <item>A straight flush beats straights, flushes and quads</item>
         <item>A set is is the highest possible hand on this board</item>
         <item>A queen high straight is the best possible hand on this board</item>
@@ -518,13 +520,23 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>Quad jacks is the best possible hand on this board</item><!-- 10 -->
         <item>Quad 7s is the best possible hand on this board</item>
         <item>66 is the best choice of the hands given because they can hit more straights than
-        KK, TT and 22 (amongst other reasons)</item>
-        <item>56 suited is the is the second best starting hand against pocket aces (the first being the other two aces)</item>
-        <item>KhKc is ~1% (49.4%) better than AhAc (48.5%) because it still has outs if a queen completes villain's straight on turn.
-        Th2d has 48.1% and 7c7h has 36.2%</item>
-        <item>A full house of 3s full of Js will win more often than Js full of 3s (however Js full of 3s will also tie more).</item>
-        <item>You have around 2% chance of winning, or about 49:1.  If the bet is $2, you are getting 50:1 pot odds,
-        and if it is $3, you are getting 33:1 so you should call $2 but fold to $3 (If you know they have Aces)</item>
+            KK, TT and 22 (amongst other reasons)
+        </item>
+        <item>56 suited is the is the second best starting hand against pocket aces (the first being
+            the other two aces)
+        </item>
+        <item>KhKc is ~1% (49.4%) better than AhAc (48.5%) because it still has outs if a queen
+            completes villain's straight on turn.
+            Th2d has 48.1% and 7c7h has 36.2%
+        </item>
+        <item>A full house of 3s full of Js will win more often than Js full of 3s (however Js full
+            of 3s will also tie more).
+        </item>
+        <item>You have around 2% chance of winning, or about 49:1. If the bet is $2, you are getting
+            50:1 pot odds,
+            and if it is $3, you are getting 33:1 so you should call $2 but fold to $3 (If you know
+            they have Aces)
+        </item>
         <item>In the great game of No Limit Texas Holdem, a flush always beats a straight.</item>
 
     </array>
