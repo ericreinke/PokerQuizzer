@@ -44,6 +44,9 @@ public class PlayActivity extends AppCompatActivity {
         //declare buttons and textView
         final TextView questionTextView = findViewById(R.id.questionTextView);
         final TextView scoreTextView = findViewById(R.id.scoreTextView);
+        final TextView timerTextView = findViewById(R.id.timerTextView);
+        timerTextView.setText(getString(R.string.seconds_remaing)+"  ");
+
 
         Button firstAnswerBtn = findViewById(R.id.firstAnswerBtn);
         Button secondAnswerBtn = findViewById(R.id.secondAnswerBtn);

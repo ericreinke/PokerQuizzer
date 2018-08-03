@@ -17,7 +17,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
     <string name="incorrect_answer">Incorrect</string>
     <string name="blank"></string>
     <string name="next_question">Next Question</string>
-    <string name="seconds_remaing">Seconds Remaining</string>
+    <string name="seconds_remaing">Seconds Remaining: </string>
     <string name="game_over">Game Over</string>
     <string name="main_menu">Main Menu</string>
     <string name="timer_over">Finish!</string>
