@@ -50,9 +50,6 @@ public class PlayActivity extends AppCompatActivity {
         Button thirdAnswerBtn = findViewById(R.id.thirdAnswerBtn);
         Button fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
         final Button[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
-        for(int i=0; i<4; i++){
-            answerButtons[i].setBackgroundColor(Color.TRANSPARENT);//from #D7D7D7
-        }
 
 
         createTimer();//creates timer
@@ -85,7 +82,8 @@ public class PlayActivity extends AppCompatActivity {
     }
     public void newQuestion(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
         for(int i=0; i<4; i++){
-            answerButtons[i].setBackgroundColor(Color.TRANSPARENT);
+            answerButtons[i].setBackgroundColor(Color.TRANSPARENT);//from #D7D7D7
+            answerButtons[i].setText("");
         }
         scoreTextView.setText(getString(R.string.score)+score);
 
@@ -171,9 +169,6 @@ public class PlayActivity extends AppCompatActivity {
             }
         }
         else if(questionType==3){
-            for(int i=0; i<4; i++){
-                answerButtons[i].setBackgroundColor(Color.parseColor(getString(R.string.button_color)));
-            }
             buttonText=retrieveTypeThree(randomQuestion);
         }
 
@@ -444,6 +439,7 @@ public class PlayActivity extends AppCompatActivity {
             imageAnswers[i].setImageDrawable(drawableArray[i]);
             imageAnswers2[i].setImageDrawable(drawableArray[i]);
             imageAnswers2[i+4].setImageDrawable(drawableArray2[i]);
+            answerButtons[i].setText(buttonText[i]);
             if(questionType==1){
                 imageAnswers[i].setVisibility(View.VISIBLE);
                 imageAnswers[i].startAnimation(anim);
@@ -454,8 +450,10 @@ public class PlayActivity extends AppCompatActivity {
                 imageAnswers2[i].startAnimation(anim);
                 imageAnswers2[i+4].startAnimation(anim);
             }
-            answerButtons[i].setText(buttonText[i]);
+           else if(questionType==3){
+                answerButtons[i].setBackgroundColor(Color.parseColor(getString(R.string.button_color)));
+                answerButtons[i].startAnimation(anim);
+            }
         }
-
     }
 }
