@@ -31,7 +31,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
     <string-array name="question_array">
         <item>What is the highest card </item>
         <item>How many playing cards are in a deck</item>
-        <item>What is the best hand</item>
+        <item>What is the nuts</item>
         <item>You are both all in.  What hand would you rather have?</item>
         <item>How many outs do you have?</item> <!-- 5 -->
         <item>What is the nuts?</item>
@@ -43,7 +43,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>You are both all in.  What hand would you rather have?</item>
         <item>You are both all in.  What hand would you rather have?</item>
         <item>You are both all in.  What hand would you rather have?</item>
-        <item>You are both all in.  What hand would you rather have (to WIN the pot)?</item> <!-- 15 -->
+        <item>new_question_temp</item> <!-- 15 -->
         <item>Your opponent has moved all in and the pot is now $100.  What is highest bet you should call?</item>
         <item>A flush beats a straight</item>
         <item>An Ace high straight flush is a Royal Flush</item>
