@@ -434,7 +434,7 @@ public class PlayActivity extends AppCompatActivity {
     public void setImageAnswers(final int questionType,ImageView[] imageAnswers, ImageView[] imageAnswers2, Drawable[] drawableArray, Drawable[] drawableArray2, Button[] answerButtons, String[] buttonText){
         AlphaAnimation anim = new AlphaAnimation(0.0f,1.0f);
         anim.setDuration(1000);
-
+        createTimer();
         for(int i=0; i<4; i++){
             imageAnswers[i].setImageDrawable(drawableArray[i]);
             imageAnswers2[i].setImageDrawable(drawableArray[i]);
@@ -455,6 +455,6 @@ public class PlayActivity extends AppCompatActivity {
                 answerButtons[i].startAnimation(anim);
             }
         }
-        createTimer();
+
     }
 }
