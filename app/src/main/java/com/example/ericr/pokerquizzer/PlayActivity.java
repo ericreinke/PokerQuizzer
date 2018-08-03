@@ -107,7 +107,8 @@ public class PlayActivity extends AppCompatActivity {
         }
         answerResources.recycle();
         //randomQuestion=15;
-
+        TextView heroTextView = findViewById(R.id.heroTextView);
+        TextView villainTextView = findViewById(R.id.villainTextView);
 
         ImageView hero1Img = findViewById(R.id.hero1);
         ImageView hero2Img = findViewById(R.id.hero2);
@@ -145,6 +146,8 @@ public class PlayActivity extends AppCompatActivity {
         for(int i=0; i<9; i++){
             community[i].setVisibility(View.INVISIBLE);
         }
+        heroTextView.setVisibility(View.INVISIBLE);
+        villainTextView.setVisibility(View.INVISIBLE);
 
 
 //declare question array and answer array   ;
@@ -202,7 +205,7 @@ public class PlayActivity extends AppCompatActivity {
         }
 
 //set the question and the buttons to the randomQuestion
-        setQuestionString(questionType, randomQuestion,  questions,  questionTextView ,  community ,   drawableCommunity,
+        setQuestionString(heroTextView, villainTextView, questionType, randomQuestion,  questions,  questionTextView ,  community ,   drawableCommunity,
           imageAnswers,  imageAnswers2,   drawableArray,   drawableArray2,   answerButtons,   buttonText);
 
 
@@ -388,7 +391,7 @@ public class PlayActivity extends AppCompatActivity {
         return found;
     }
 
-    public void setQuestionString(final int questionType,int randomQuestion, String[] questions, TextView questionTextView ,final ImageView[] community , final Drawable[] drawableCommunity,
+    public void setQuestionString(final TextView heroTextView, final TextView villainTextView, final int questionType,int randomQuestion, String[] questions, TextView questionTextView ,final ImageView[] community , final Drawable[] drawableCommunity,
                                   final ImageView[] imageAnswers,final ImageView[] imageAnswers2, final Drawable[] drawableArray, final Drawable[] drawableArray2, final Button[] answerButtons, final String[] buttonText){
         questionTextView.setText(questions[randomQuestion]);//+" correct index is: "+correctIndex);
 
@@ -399,20 +402,26 @@ public class PlayActivity extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                setCommunityCards( questionType, community ,  drawableCommunity,
+                setCommunityCards(heroTextView,villainTextView, questionType, community ,  drawableCommunity,
                   imageAnswers,  imageAnswers2,   drawableArray,   drawableArray2,   answerButtons,   buttonText);
             }
         }, 2000);
     }   //calls setImageAnswers
-    public void setCommunityCards(final int questionType,ImageView[] community , Drawable[] drawableCommunity,
+    public void setCommunityCards(final TextView heroTextView, final TextView villainTextView, final int questionType,ImageView[] community , Drawable[] drawableCommunity,
                                   final ImageView[] imageAnswers,final ImageView[] imageAnswers2, final Drawable[] drawableArray, final Drawable[] drawableArray2, final Button[] answerButtons, final String[] buttonText){
         //draw the community cards
+
+
         AlphaAnimation anim = new AlphaAnimation(0.0f,1.0f);
         anim.setDuration(1000);
 
+        heroTextView.setVisibility(View.VISIBLE);
+        villainTextView.setVisibility(View.VISIBLE);
         for(int i=0; i<9; i++){
             community[i].setVisibility(View.VISIBLE);
         }
+        heroTextView.startAnimation(anim);
+        villainTextView.startAnimation(anim);
         for(int i=0; i<9; i++){
             community[i].setImageDrawable(drawableCommunity[i]);
             community[i].startAnimation(anim);
