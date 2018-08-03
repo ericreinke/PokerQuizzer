@@ -52,7 +52,7 @@ public class PlayActivity extends AppCompatActivity {
         final Button[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
 
 
-        createTimer();//creates timer
+
         newQuestion(questionTextView,answerButtons,scoreTextView);//CREATES A NEW QUESTION, mutates correctIndex (0-3);
 
     }
@@ -250,7 +250,7 @@ public class PlayActivity extends AppCompatActivity {
                         newQuestion(questionTextView, answerButtons, scoreTextView);
                         dialog.dismiss();
                         isPaused=false;
-                        createTimer();
+
                     }
                 });
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.why),
@@ -309,7 +309,7 @@ public class PlayActivity extends AppCompatActivity {
                         newQuestion(questionTextView, answerButtons, scoreTextView);
                         dialog.dismiss();
                         isPaused=false;
-                        createTimer();
+
                     }
                 });
         alertDialog.show();
@@ -455,5 +455,6 @@ public class PlayActivity extends AppCompatActivity {
                 answerButtons[i].startAnimation(anim);
             }
         }
+        createTimer();
     }
 }
