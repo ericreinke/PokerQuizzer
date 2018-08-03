@@ -11,10 +11,12 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -135,14 +137,17 @@ public class PlayActivity extends AppCompatActivity {
         final ImageView[] imageAnswers2 = {answerImg11,answerImg21, answerImg31, answerImg41, answerImg12, answerImg22, answerImg32, answerImg42};
 
         for(int i=0; i<4; i++){
-            imageAnswers[i].setVisibility(View.VISIBLE);
+            imageAnswers[i].setVisibility(View.INVISIBLE);
         }
         for(int i=0; i<8; i++){
-            imageAnswers2[i].setVisibility(View.VISIBLE);
+            imageAnswers2[i].setVisibility(View.INVISIBLE);
+        }
+        for(int i=0; i<9; i++){
+            community[i].setVisibility(View.INVISIBLE);
         }
 
 
-//declare question array and answer array
+//declare question array and answer array   ;
         int questionType=res.getIntArray(R.array.answerType)[randomQuestion];
         Drawable[] drawableArray = new Drawable[4];
         Drawable[] drawableArray2= new Drawable[4];
@@ -197,25 +202,10 @@ public class PlayActivity extends AppCompatActivity {
         }
 
 //set the question and the buttons to the randomQuestion
-        questionTextView.setText(questions[randomQuestion]);//+" correct index is: "+correctIndex);
+        setQuestionString(questionType, randomQuestion,  questions,  questionTextView ,  community ,   drawableCommunity,
+          imageAnswers,  imageAnswers2,   drawableArray,   drawableArray2,   answerButtons,   buttonText);
 
-        for(int i=0; i<4; i++){
-            imageAnswers[i].setImageDrawable(drawableArray[i]);
-            imageAnswers2[i].setImageDrawable(drawableArray[i]);
-            imageAnswers2[i+4].setImageDrawable(drawableArray2[i]);
-            if(questionType!=1){
-                imageAnswers[i].setVisibility(GONE);
-            }
-            if(questionType!=2){
-                imageAnswers2[i].setVisibility(GONE);
-                imageAnswers2[i+4].setVisibility(GONE);
-            }
-            answerButtons[i].setText(buttonText[i]);
-        }
-        //draw the community cards
-        for(int i=0; i<9; i++){
-            community[i].setImageDrawable(drawableCommunity[i]);
-        }
+
 
 //click listseners
         for (int i = 0; i < 4; i++) {
@@ -340,7 +330,7 @@ public class PlayActivity extends AppCompatActivity {
         questionAnswers.recycle();//free
         return drawableArray;
     }
-    public Drawable[] retrieveTypeTwo(int randomQuestion){//returns an array with 8 drawables.  These drawables are split up after this fucktion call
+    public Drawable[] retrieveTypeTwo(int randomQuestion){
         Resources res = getResources();
         TypedArray answerResources = res.obtainTypedArray(R.array.answers);
         int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
@@ -354,7 +344,7 @@ public class PlayActivity extends AppCompatActivity {
 
         questionAnswers.recycle();//free
         return drawableArray;
-    }
+    }//returns an array with 8 drawables.  These drawables are split up after this fucktion call
     public String[] retrieveTypeThree (int randomQuestion){
 
         Resources res = getResources();
@@ -396,5 +386,73 @@ public class PlayActivity extends AppCompatActivity {
             }
         }
         return found;
+    }
+
+    public void setQuestionString(final int questionType,int randomQuestion, String[] questions, TextView questionTextView ,final ImageView[] community , final Drawable[] drawableCommunity,
+                                  final ImageView[] imageAnswers,final ImageView[] imageAnswers2, final Drawable[] drawableArray, final Drawable[] drawableArray2, final Button[] answerButtons, final String[] buttonText){
+        questionTextView.setText(questions[randomQuestion]);//+" correct index is: "+correctIndex);
+
+        AlphaAnimation anim = new AlphaAnimation(0.0f,1.0f);
+        anim.setDuration(1000);
+        questionTextView.startAnimation(anim);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                setCommunityCards( questionType, community ,  drawableCommunity,
+                  imageAnswers,  imageAnswers2,   drawableArray,   drawableArray2,   answerButtons,   buttonText);
+            }
+        }, 2000);
+    }   //calls setImageAnswers
+    public void setCommunityCards(final int questionType,ImageView[] community , Drawable[] drawableCommunity,
+                                  final ImageView[] imageAnswers,final ImageView[] imageAnswers2, final Drawable[] drawableArray, final Drawable[] drawableArray2, final Button[] answerButtons, final String[] buttonText){
+        //draw the community cards
+        AlphaAnimation anim = new AlphaAnimation(0.0f,1.0f);
+        anim.setDuration(1000);
+
+        for(int i=0; i<9; i++){
+            community[i].setVisibility(View.VISIBLE);
+        }
+        for(int i=0; i<9; i++){
+            community[i].setImageDrawable(drawableCommunity[i]);
+            community[i].startAnimation(anim);
+        }
+
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                setImageAnswers(questionType ,imageAnswers,imageAnswers2,drawableArray,drawableArray2, answerButtons, buttonText);
+            }
+        }, 1500);
+    }//calls setImageAnswer()
+    public void setImageAnswers(final int questionType,ImageView[] imageAnswers, ImageView[] imageAnswers2, Drawable[] drawableArray, Drawable[] drawableArray2, Button[] answerButtons, String[] buttonText){
+        AlphaAnimation anim = new AlphaAnimation(0.0f,1.0f);
+        anim.setDuration(1000);
+        for(int i=0; i<4; i++){
+            imageAnswers[i].setVisibility(View.VISIBLE);
+        }
+        for(int i=0; i<8; i++){
+            imageAnswers2[i].setVisibility(View.VISIBLE);
+        }
+        for(int i=0; i<4; i++){
+            imageAnswers[i].setImageDrawable(drawableArray[i]);
+            imageAnswers2[i].setImageDrawable(drawableArray[i]);
+            imageAnswers2[i+4].setImageDrawable(drawableArray2[i]);
+            imageAnswers[i].startAnimation(anim);
+            imageAnswers2[i].startAnimation(anim);
+            imageAnswers2[i+4].startAnimation(anim);
+            if(questionType!=1){
+                imageAnswers[i].setVisibility(GONE);
+            }
+            if(questionType!=2){
+                imageAnswers2[i].setVisibility(GONE);
+                imageAnswers2[i+4].setVisibility(GONE);
+            }
+            answerButtons[i].setText(buttonText[i]);
+        }
+
+
     }
 }

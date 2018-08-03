@@ -45,6 +45,8 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>You are both all in.  What hand would you rather have?</item>
         <item>You are both all in.  What hand would you rather have (to WIN the pot)?</item> <!-- 15 -->
         <item>Your opponent has moved all in and the pot is now $100.  What is highest bet you should call?</item>
+        <item>A flush beats a straight</item>
+        <item>An Ace high straight flush is a Royal Flush</item>
 
     </string-array>
 
@@ -67,6 +69,32 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>2</item>
         <item>2</item><!-- 15 -->
         <item>3</item>
+        <item>3</item>
+        <item>3</item>
+    </integer-array>
+
+    <integer-array name="questionType"><!-- 0 = no hole, no com     (00)
+                                            1 = no hole, yes com    (01)
+                                            2 = yes hole, no com    (10)
+                                            3 = yes hole, yes com   (11) -->
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>3</item>
+        <item>3</item><!-- 5 -->
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item><!-- 10 -->
+        <item>1</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item><!-- 15 -->
+        <item>3</item>
+        <item>0</item>
+        <item>0</item>
     </integer-array>
 
     <!-- ============================== -->
@@ -88,10 +116,34 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@array/q14c</item>
         <item>@array/q15c</item>
         <item>@array/q16c</item>
+        <item>@array/q17c</item>
+        <item>@array/q18c</item>
 
     </array>
     <!--Community order is: Hero1, hero2, villain1, villain2, flop,flop,flop,turn,river-->
 
+    <integer-array name="q18c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+    </integer-array>
+    <integer-array name="q17c">
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/blue_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+        <item>@drawable/gray_back</item>
+    </integer-array>
     <integer-array name="q16c">
         <item>@drawable/ck</item>
         <item>@drawable/dk</item>
@@ -288,8 +340,22 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>@array/q14a</item>
         <item>@array/q15a</item>
         <item>@array/q16a</item>
+        <item>@array/q17a</item>
+        <item>@array/q18a</item>
     </array>
 
+    <string-array name = "q18a">
+        <item>True</item>
+        <item>False</item>
+        <item>Depends on the suits</item>
+        <item>Depends on the weather</item>
+    </string-array>
+    <string-array name = "q17a">
+        <item>True</item>
+        <item>False</item>
+        <item>Depends on the suits</item>
+        <item>Depends on the weather</item>
+    </string-array>
     <string-array name = "q16a">
         <item>$ 2</item>
         <item>$ 3</item>
@@ -459,6 +525,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>A full house of 3s full of Js will win more often than Js full of 3s (however Js full of 3s will also tie more).</item>
         <item>You have around 2% chance of winning, or about 49:1.  If the bet is $2, you are getting 50:1 pot odds,
         and if it is $3, you are getting 33:1 so you should call $2 but fold to $3 (If you know they have Aces)</item>
+        <item>In the great game of No Limit Texas Holdem, a flush always beats a straight.</item>
 
     </array>
 </resources>
