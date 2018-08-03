@@ -16,8 +16,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button playGameBtn = (Button) findViewById(R.id.playGameBtn);
+        Button playGameBtn =findViewById(R.id.playGameBtn);
+        Button practiceBtn = findViewById(R.id.practiceBtn);
         //playGameBtn.setBackgroundColor(Color.TRANSPARENT);//this is  a test
+        practiceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent practiceIntent = new Intent (MainActivity.this, PracticeActivity.class);
+                startActivity(practiceIntent);
+                finish();
+            }
+        });
 
         playGameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
