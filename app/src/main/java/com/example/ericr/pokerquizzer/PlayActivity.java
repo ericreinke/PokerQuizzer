@@ -439,29 +439,23 @@ public class PlayActivity extends AppCompatActivity {
     public void setImageAnswers(final int questionType,ImageView[] imageAnswers, ImageView[] imageAnswers2, Drawable[] drawableArray, Drawable[] drawableArray2, Button[] answerButtons, String[] buttonText){
         AlphaAnimation anim = new AlphaAnimation(0.0f,1.0f);
         anim.setDuration(1000);
-        for(int i=0; i<4; i++){
-            imageAnswers[i].setVisibility(View.VISIBLE);
-        }
-        for(int i=0; i<8; i++){
-            imageAnswers2[i].setVisibility(View.VISIBLE);
-        }
+
         for(int i=0; i<4; i++){
             imageAnswers[i].setImageDrawable(drawableArray[i]);
             imageAnswers2[i].setImageDrawable(drawableArray[i]);
             imageAnswers2[i+4].setImageDrawable(drawableArray2[i]);
-            imageAnswers[i].startAnimation(anim);
-            imageAnswers2[i].startAnimation(anim);
-            imageAnswers2[i+4].startAnimation(anim);
-            if(questionType!=1){
-                imageAnswers[i].setVisibility(GONE);
+            if(questionType==1){
+                imageAnswers[i].setVisibility(View.VISIBLE);
+                imageAnswers[i].startAnimation(anim);
             }
-            if(questionType!=2){
-                imageAnswers2[i].setVisibility(GONE);
-                imageAnswers2[i+4].setVisibility(GONE);
+            if(questionType==2){
+                imageAnswers2[i].setVisibility(View.VISIBLE);
+                imageAnswers2[i+4].setVisibility(View.VISIBLE);
+                imageAnswers2[i].startAnimation(anim);
+                imageAnswers2[i+4].startAnimation(anim);
             }
             answerButtons[i].setText(buttonText[i]);
         }
-
 
     }
 }
