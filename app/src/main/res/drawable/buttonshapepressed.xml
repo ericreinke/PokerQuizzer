@@ -3,12 +3,12 @@
     <corners
         android:radius="14dp"
         />
-    
+
     <gradient
         android:angle="90"
         android:type="linear"
-        android:startColor="#214896"
-        android:endColor="#387AFF"
+        android:endColor="#214896"
+        android:startColor="#387AFF"
 
         />
     <padding
