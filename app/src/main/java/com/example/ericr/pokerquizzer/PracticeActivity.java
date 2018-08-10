@@ -1,12 +1,19 @@
 package com.example.ericr.pokerquizzer;
 
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class PracticeActivity extends AppCompatActivity {
 
@@ -16,20 +23,37 @@ public class PracticeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_practice);
         ImageButton b= findViewById(R.id.imageButton);
         //scale drawables down to size
-        Drawable d1 = getResources().getDrawable(R.drawable.c2s);
-        Drawable d2 = getResources().getDrawable(R.drawable.d2s);
+        Drawable d1 = getResources().getDrawable(R.drawable.c2);
+        Drawable d2 = getResources().getDrawable(R.drawable.d2);
         Bitmap bm1 = ((BitmapDrawable)d1).getBitmap();
         Bitmap bm2 = ((BitmapDrawable)d2).getBitmap();
-        Drawable card1 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bm1, 55, 78, true));
-        Drawable card2 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bm2, 55, 78, true));
+        Drawable card1 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bm1, 140, 210, true));
+        Drawable card2 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bm2, 140, 210, true));
 
         Drawable[] layers = new Drawable[]{card1, card2};
         LayerDrawable ld= new LayerDrawable(layers);
+        ld.setLayerGravity(0, Gravity.LEFT);
+        ld.setLayerGravity(1, Gravity.LEFT);
         ld.setLayerInset(0,0,0,0,0);
-        ld.setLayerInset(1,25,0,0,0);
-        ld.setLayerInset(2,25,0,0,0);
-        ld.setLayerInset(3,25,0,0,0);
-        b.setImageDrawable(ld);
+        ld.setLayerInset(1,50,0,0,0);
+
+        Bitmap bm=Bitmap.createBitmap(400, 400, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bm);
+        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+        p.setTextSize(48);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/aquariusno8cg.ttf");
+        p.setTypeface(font);
+
+
+        c.drawText("1e2e3e4e5e6e7e8e9e",0,224,p);
+
+        //ImageView i = (ImageView) findViewById(R.id.commenter_photo_four);
+        //i.setImageBitmap(bm);
+
+        Drawable testPaint = new BitmapDrawable(getResources(),bm);
+        b.setImageDrawable(testPaint);
+
+
     }
 
 }
