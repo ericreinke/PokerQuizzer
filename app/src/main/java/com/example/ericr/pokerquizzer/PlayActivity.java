@@ -21,6 +21,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,11 +52,11 @@ public class PlayActivity extends AppCompatActivity {
         timerTextView.setText(getString(R.string.seconds_remaing)+"  ");
 
 
-        Button firstAnswerBtn = findViewById(R.id.firstAnswerBtn);
-        Button secondAnswerBtn = findViewById(R.id.secondAnswerBtn);
-        Button thirdAnswerBtn = findViewById(R.id.thirdAnswerBtn);
-        Button fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
-        final Button[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
+        ImageButton firstAnswerBtn = findViewById(R.id.firstAnswerBtn);
+        ImageButton secondAnswerBtn = findViewById(R.id.secondAnswerBtn);
+        ImageButton thirdAnswerBtn = findViewById(R.id.thirdAnswerBtn);
+        ImageButton fourthAnswerBtn = findViewById(R.id.fourthAnswerBtn);
+        final ImageButton[] answerButtons = {firstAnswerBtn,secondAnswerBtn,thirdAnswerBtn,fourthAnswerBtn};
 
 
 
@@ -86,10 +87,9 @@ public class PlayActivity extends AppCompatActivity {
         alertDialog.show();
 
     }
-    public void newQuestion(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView){
+    public void newQuestion(final TextView questionTextView, final ImageButton[] answerButtons, final TextView scoreTextView){
         for(int i=0; i<4; i++){
             answerButtons[i].setBackgroundColor(Color.TRANSPARENT);//from #D7D7D7
-            answerButtons[i].setText("");
         }
         scoreTextView.setText(getString(R.string.score)+score);
 
@@ -125,28 +125,6 @@ public class PlayActivity extends AppCompatActivity {
         ImageView riverImg = findViewById(R.id.river);
         final ImageView[] community = {hero1Img, hero2Img, villain1Img, villain2Img, flop1Img, flop2Img, flop3Img, turnImg, riverImg};
 
-        ImageView firstAnswerImg = findViewById(R.id.imageAnswer1);
-        ImageView secondAnswerImg= findViewById(R.id.imageAnswer2);
-        ImageView thirdAnswerImg = findViewById(R.id.imageAnswer3);
-        ImageView fourthAnswerImg= findViewById(R.id.imageAnswer4);
-        final ImageView[] imageAnswers={firstAnswerImg,secondAnswerImg,thirdAnswerImg,fourthAnswerImg};
-
-        ImageView answerImg11 = findViewById(R.id.imageAnswer11);
-        ImageView answerImg12 = findViewById(R.id.imageAnswer12);
-        ImageView answerImg21 = findViewById(R.id.imageAnswer21);
-        ImageView answerImg22 = findViewById(R.id.imageAnswer22);
-        ImageView answerImg31 = findViewById(R.id.imageAnswer31);
-        ImageView answerImg32 = findViewById(R.id.imageAnswer32);
-        ImageView answerImg41 = findViewById(R.id.imageAnswer41);
-        ImageView answerImg42 = findViewById(R.id.imageAnswer42);
-        final ImageView[] imageAnswers2 = {answerImg11,answerImg21, answerImg31, answerImg41, answerImg12, answerImg22, answerImg32, answerImg42};
-
-        for(int i=0; i<4; i++){
-            imageAnswers[i].setVisibility(View.INVISIBLE);
-        }
-        for(int i=0; i<8; i++){
-            imageAnswers2[i].setVisibility(View.INVISIBLE);
-        }
         for(int i=0; i<9; i++){
             community[i].setVisibility(View.INVISIBLE);
         }
@@ -161,21 +139,8 @@ public class PlayActivity extends AppCompatActivity {
         String [] buttonText = new String[4];
         Drawable[] drawableCommunity = retrieveCommunity(randomQuestion);
 
-        if(questionType==1){
-            drawableArray=retrieveTypeOne(randomQuestion);
-            buttonText = returnBlankStrings();
-        }
-        else if(questionType==2){
-            Drawable[]temp= retrieveTypeTwo(randomQuestion);
-            buttonText = returnBlankStrings();
-            for(int i=0;i<8;i+=2){
-                drawableArray[i/2]=temp[i];
-                drawableArray2[i/2]=temp[i+1];
-
-            }
-        }
-        else if(questionType==3){
-            buttonText=retrieveTypeThree(randomQuestion);
+        if(true){//NOW IT DOESN'T MATTER WHAT QUESTION TYPE. eventually remove this if
+            drawableArray=retrieveDrawableArray(randomQuestion);
         }
 
         String[] questions = res.getStringArray(R.array.question_array);
@@ -206,8 +171,8 @@ public class PlayActivity extends AppCompatActivity {
         }
 
 //set the question and the buttons to the randomQuestion
-        setQuestionString(heroTextView, villainTextView, questionType, randomQuestion,  questions,  questionTextView ,  community ,   drawableCommunity,
-          imageAnswers,  imageAnswers2,   drawableArray,   drawableArray2,   answerButtons,   buttonText);
+        setQuestionString(heroTextView, villainTextView,  randomQuestion,  questions,  questionTextView ,  community ,   drawableCommunity,
+           drawableArray, answerButtons);
 
 
 
@@ -237,7 +202,7 @@ public class PlayActivity extends AppCompatActivity {
 
 
     }
-    public void questionDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView,boolean correct, final String whyAnswer){
+    public void questionDialog(final TextView questionTextView, final ImageButton[] answerButtons, final TextView scoreTextView,boolean correct, final String whyAnswer){
         AlertDialog alertDialog;
         if(correct){
             alertDialog = new AlertDialog.Builder(PlayActivity.this,R.style.AlertDialogStyleCorrect).create();
@@ -302,7 +267,7 @@ public class PlayActivity extends AppCompatActivity {
             }
         }.start();
     }
-    public void whyDialog(final TextView questionTextView, final Button[] answerButtons, final TextView scoreTextView, final String whyAnswer){
+    public void whyDialog(final TextView questionTextView, final ImageButton[] answerButtons, final TextView scoreTextView, final String whyAnswer){
         //dont forget to change isPaused=false and call creatTimer();
         //android.os.SystemClock.sleep(750);
         AlertDialog alertDialog = new AlertDialog.Builder(PlayActivity.this,R.style.AlertDialogStyleNeutral).create();
@@ -320,7 +285,7 @@ public class PlayActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
-    public Drawable[] retrieveTypeOne(int randomQuestion){
+    public Drawable[] retrieveDrawableArray(int randomQuestion){
         Resources res= getResources();
         TypedArray answerResources = res.obtainTypedArray(R.array.answers);
         int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
@@ -328,9 +293,19 @@ public class PlayActivity extends AppCompatActivity {
         TypedArray questionAnswers = res.obtainTypedArray(resId);//this is for a specific answer
         Drawable[] drawableArray = new Drawable[4];
 
-        for(int i=0; i<4; i++){
-            drawableArray[i]=questionAnswers.getDrawable(i);
+        if(randomQuestion==1){
+            for(int i=0; i<4; i++){
+                drawableArray[i]=questionAnswers.getDrawable(i);
+            }//ezpz
         }
+        else if(randomQuestion==2){
+            //compoundDrawable this shit
+        }
+        else if(randomQuestion==3){
+            //text canvas paint hell ya
+        }
+
+
         questionAnswers.recycle();//free
         return drawableArray;
     }
@@ -374,13 +349,6 @@ public class PlayActivity extends AppCompatActivity {
 
         return drawableArray;
     }
-    public String[] returnBlankStrings(){
-        String[] blanks=new String[4];
-        for(int i=0; i<4; i++){
-            blanks[i]=getResources().getString(R.string.blank);
-        }
-        return blanks;
-    }
     public boolean inHistory(int random){
         boolean found =false;
         for(int i=0; i<5; i++){
@@ -392,8 +360,8 @@ public class PlayActivity extends AppCompatActivity {
         return found;
     }
 
-    public void setQuestionString(final TextView heroTextView, final TextView villainTextView, final int questionType,int randomQuestion, String[] questions, TextView questionTextView ,final ImageView[] community , final Drawable[] drawableCommunity,
-                                  final ImageView[] imageAnswers,final ImageView[] imageAnswers2, final Drawable[] drawableArray, final Drawable[] drawableArray2, final Button[] answerButtons, final String[] buttonText){
+    public void setQuestionString(final TextView heroTextView, final TextView villainTextView, int randomQuestion, String[] questions, TextView questionTextView ,final ImageView[] community ,
+                                  final Drawable[] drawableCommunity, final Drawable[] answerImages, final ImageButton[] answerButtons){
         questionTextView.setText(questions[randomQuestion]);//+" correct index is: "+correctIndex);
 
         AlphaAnimation anim = new AlphaAnimation(0.0f,1.0f);
@@ -403,13 +371,13 @@ public class PlayActivity extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                setCommunityCards(heroTextView,villainTextView, questionType, community ,  drawableCommunity,
-                  imageAnswers,  imageAnswers2,   drawableArray,   drawableArray2,   answerButtons,   buttonText);
+                setCommunityCards(heroTextView,villainTextView, community ,  drawableCommunity,
+                   answerImages,   answerButtons);
             }
         }, 2000);
     }   //calls setImageAnswers
-    public void setCommunityCards(final TextView heroTextView, final TextView villainTextView, final int questionType,ImageView[] community , Drawable[] drawableCommunity,
-                                  final ImageView[] imageAnswers,final ImageView[] imageAnswers2, final Drawable[] drawableArray, final Drawable[] drawableArray2, final Button[] answerButtons, final String[] buttonText){
+    public void setCommunityCards(final TextView heroTextView, final TextView villainTextView,ImageView[] community , Drawable[] drawableCommunity,
+                                  final Drawable[] answerImages, final ImageButton[] answerButtons){
         //draw the community cards
 
 
@@ -433,33 +401,17 @@ public class PlayActivity extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                setImageAnswers(questionType ,imageAnswers,imageAnswers2,drawableArray,drawableArray2, answerButtons, buttonText);
+                setImageAnswers(answerImages, answerButtons);
             }
         }, 1500);
     }//calls setImageAnswer()
-    public void setImageAnswers(final int questionType,ImageView[] imageAnswers, ImageView[] imageAnswers2, Drawable[] drawableArray, Drawable[] drawableArray2, Button[] answerButtons, String[] buttonText){
+    public void setImageAnswers(Drawable[] answerImages, ImageButton[] answerButtons){
         AlphaAnimation anim = new AlphaAnimation(0.0f,1.0f);
         anim.setDuration(1000);
         createTimer();
         for(int i=0; i<4; i++){
-            imageAnswers[i].setImageDrawable(drawableArray[i]);
-            imageAnswers2[i].setImageDrawable(drawableArray[i]);
-            imageAnswers2[i+4].setImageDrawable(drawableArray2[i]);
-            answerButtons[i].setText(buttonText[i]);
-            if(questionType==1){
-                imageAnswers[i].setVisibility(View.VISIBLE);
-                imageAnswers[i].startAnimation(anim);
-            }
-            if(questionType==2){
-                imageAnswers2[i].setVisibility(View.VISIBLE);
-                imageAnswers2[i+4].setVisibility(View.VISIBLE);
-                imageAnswers2[i].startAnimation(anim);
-                imageAnswers2[i+4].startAnimation(anim);
-            }
-           else if(questionType==3){
-                answerButtons[i].setBackgroundColor(Color.parseColor(getString(R.string.button_color)));
-                answerButtons[i].startAnimation(anim);
-            }
+            //scale down images?
+            answerButtons[i].setImageDrawable(answerImages[i]);
         }
 
     }

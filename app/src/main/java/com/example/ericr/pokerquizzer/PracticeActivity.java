@@ -21,7 +21,7 @@ public class PracticeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
-        ImageButton b= findViewById(R.id.imageButton);
+
         //scale drawables down to size
         Drawable d1 = getResources().getDrawable(R.drawable.c2);
         Drawable d2 = getResources().getDrawable(R.drawable.d2);
@@ -37,21 +37,16 @@ public class PracticeActivity extends AppCompatActivity {
         ld.setLayerInset(0,0,0,0,0);
         ld.setLayerInset(1,50,0,0,0);
 
+        ImageButton b= findViewById(R.id.imageButton);
         Bitmap bm=Bitmap.createBitmap(400, 400, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(bm);
         Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
         p.setTextSize(48);
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/aquariusno8cg.ttf");
         p.setTypeface(font);
-
-
         c.drawText("1e2e3e4e5e6e7e8e9e",0,224,p);
-
-        //ImageView i = (ImageView) findViewById(R.id.commenter_photo_four);
-        //i.setImageBitmap(bm);
-
         Drawable testPaint = new BitmapDrawable(getResources(),bm);
-        b.setImageDrawable(testPaint);
+        b.setImageDrawable(ld); //interchange between testpaint and ld
 
 
     }

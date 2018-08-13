@@ -8,7 +8,7 @@
     android:theme="@style/AppTheme"
     tools:context=".PlayActivity">
 
-    <Button
+    <ImageButton
         android:id="@+id/firstAnswerBtn"
         android:layout_width="90dp"
         android:layout_height="90dp"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/firstFlop"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <Button
+    <ImageButton
         android:id="@+id/secondAnswerBtn"
         android:layout_width="90dp"
         android:layout_height="90dp"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/turn"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <Button
+    <ImageButton
         android:id="@+id/thirdAnswerBtn"
         android:layout_width="90dp"
         android:layout_height="90dp"
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/firstAnswerBtn"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <Button
+    <ImageButton
         android:id="@+id/fourthAnswerBtn"
         android:layout_width="90dp"
         android:layout_height="90dp"
@@ -139,112 +139,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.498"
         app:srcCompat="@drawable/blue_back" />
-
-    <ImageView
-        android:id="@+id/imageAnswer42"
-        android:layout_width="55dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/fourthAnswerBtn"
-        app:layout_constraintStart_toEndOf="@+id/imageAnswer41"
-        app:layout_constraintTop_toTopOf="@+id/fourthAnswerBtn"
-        app:srcCompat="@drawable/da" />
-
-    <ImageView
-        android:id="@+id/imageAnswer41"
-        android:layout_width="55dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/fourthAnswerBtn"
-        app:layout_constraintStart_toStartOf="@+id/fourthAnswerBtn"
-        app:layout_constraintTop_toTopOf="@+id/fourthAnswerBtn"
-        app:srcCompat="@drawable/da" />
-
-    <ImageView
-        android:id="@+id/imageAnswer32"
-        android:layout_width="55dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/thirdAnswerBtn"
-        app:layout_constraintEnd_toEndOf="@+id/thirdAnswerBtn"
-        app:layout_constraintTop_toTopOf="@+id/thirdAnswerBtn"
-        app:layout_constraintVertical_bias="0.444"
-        app:srcCompat="@drawable/da" />
-
-    <ImageView
-        android:id="@+id/imageAnswer31"
-        android:layout_width="55dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/thirdAnswerBtn"
-        app:layout_constraintEnd_toStartOf="@+id/imageAnswer32"
-        app:layout_constraintTop_toTopOf="@+id/thirdAnswerBtn"
-        app:layout_constraintVertical_bias="0.444"
-        app:srcCompat="@drawable/da" />
-
-    <ImageView
-        android:id="@+id/imageAnswer22"
-        android:layout_width="55dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/secondAnswerBtn"
-        app:layout_constraintStart_toEndOf="@+id/imageAnswer21"
-        app:layout_constraintTop_toTopOf="@+id/secondAnswerBtn"
-        app:srcCompat="@drawable/da" />
-
-    <ImageView
-        android:id="@+id/imageAnswer21"
-        android:layout_width="55dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/secondAnswerBtn"
-        app:layout_constraintStart_toStartOf="@+id/secondAnswerBtn"
-        app:layout_constraintTop_toTopOf="@+id/secondAnswerBtn"
-        app:srcCompat="@drawable/da" />
-
-    <ImageView
-        android:id="@+id/imageAnswer12"
-        android:layout_width="55dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/firstAnswerBtn"
-        app:layout_constraintEnd_toEndOf="@+id/firstAnswerBtn"
-        app:layout_constraintTop_toTopOf="@+id/firstAnswerBtn"
-        app:srcCompat="@drawable/ca" />
-
-    <ImageView
-        android:id="@+id/imageAnswer11"
-        android:layout_width="55dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/firstAnswerBtn"
-        app:layout_constraintEnd_toStartOf="@+id/imageAnswer12"
-        app:layout_constraintTop_toTopOf="@+id/firstAnswerBtn"
-        app:layout_constraintVertical_bias="0.444"
-        app:srcCompat="@drawable/ca" />
 
     <ImageView
         android:id="@+id/firstFlop"
@@ -366,74 +260,6 @@
         app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageAnswer1"
-        android:layout_width="46dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/firstAnswerBtn"
-        app:layout_constraintEnd_toEndOf="@+id/firstAnswerBtn"
-        app:layout_constraintStart_toStartOf="@+id/firstAnswerBtn"
-        app:layout_constraintTop_toTopOf="@+id/firstAnswerBtn"
-        app:srcCompat="@drawable/ca" />
-
-    <ImageView
-        android:id="@+id/imageAnswer4"
-        android:layout_width="46dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/fourthAnswerBtn"
-        app:layout_constraintEnd_toEndOf="@+id/fourthAnswerBtn"
-        app:layout_constraintStart_toStartOf="@+id/fourthAnswerBtn"
-        app:layout_constraintTop_toTopOf="@+id/fourthAnswerBtn"
-        app:srcCompat="@drawable/sa" />
-
-    <ImageView
-        android:id="@+id/imageAnswer3"
-        android:layout_width="46dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/thirdAnswerBtn"
-        app:layout_constraintEnd_toEndOf="@+id/thirdAnswerBtn"
-        app:layout_constraintStart_toStartOf="@+id/thirdAnswerBtn"
-        app:layout_constraintTop_toTopOf="@+id/thirdAnswerBtn"
-        app:srcCompat="@drawable/ha" />
-
-    <ImageView
-        android:id="@+id/imageAnswer2"
-        android:layout_width="46dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/secondAnswerBtn"
-        app:layout_constraintEnd_toEndOf="@+id/secondAnswerBtn"
-        app:layout_constraintStart_toStartOf="@+id/secondAnswerBtn"
-        app:layout_constraintTop_toTopOf="@+id/secondAnswerBtn"
-        app:srcCompat="@drawable/da" />
 
     <TextView
         android:id="@+id/heroTextView"
