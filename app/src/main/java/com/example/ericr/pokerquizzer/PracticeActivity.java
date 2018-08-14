@@ -1,6 +1,7 @@
 package com.example.ericr.pokerquizzer;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -11,6 +12,8 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,8 +30,9 @@ public class PracticeActivity extends AppCompatActivity {
         Drawable d2 = getResources().getDrawable(R.drawable.d2);
         Bitmap bm1 = ((BitmapDrawable)d1).getBitmap();
         Bitmap bm2 = ((BitmapDrawable)d2).getBitmap();
-        Drawable card1 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bm1, 140, 210, true));
-        Drawable card2 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bm2, 140, 210, true));
+
+        Drawable card1 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bm1, dipToPixels(this,55), dipToPixels(this,78), true));
+        Drawable card2 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bm2, dipToPixels(this,55), dipToPixels(this,78),true));
 
         Drawable[] layers = new Drawable[]{card1, card2};
         LayerDrawable ld= new LayerDrawable(layers);
@@ -50,5 +54,8 @@ public class PracticeActivity extends AppCompatActivity {
 
 
     }
-
+    public static int dipToPixels(Context context, float dipValue) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
+    }
 }

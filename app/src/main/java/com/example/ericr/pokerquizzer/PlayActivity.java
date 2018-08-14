@@ -2,10 +2,12 @@ package com.example.ericr.pokerquizzer;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
@@ -17,6 +19,8 @@ import android.os.Handler;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -89,7 +93,7 @@ public class PlayActivity extends AppCompatActivity {
     }
     public void newQuestion(final TextView questionTextView, final ImageButton[] answerButtons, final TextView scoreTextView){
         for(int i=0; i<4; i++){
-            answerButtons[i].setBackgroundColor(Color.TRANSPARENT);//from #D7D7D7
+            //answerButtons[i].setBackgroundColor(Color.parseColor("#D7D7D7"));//from #D7D7D7
         }
         scoreTextView.setText(getString(R.string.score)+score);
 
@@ -110,7 +114,7 @@ public class PlayActivity extends AppCompatActivity {
             }
         }
         answerResources.recycle();
-        //randomQuestion=15;
+        //randomQuestion=0;
         TextView heroTextView = findViewById(R.id.heroTextView);
         TextView villainTextView = findViewById(R.id.villainTextView);
 
@@ -134,13 +138,11 @@ public class PlayActivity extends AppCompatActivity {
 
 //declare question array and answer array   ;
         int questionType=res.getIntArray(R.array.answerType)[randomQuestion];
-        Drawable[] drawableArray = new Drawable[4];
-        Drawable[] drawableArray2= new Drawable[4];
-        String [] buttonText = new String[4];
+        Drawable[] drawableArray;
         Drawable[] drawableCommunity = retrieveCommunity(randomQuestion);
 
         if(true){//NOW IT DOESN'T MATTER WHAT QUESTION TYPE. eventually remove this if
-            drawableArray=retrieveDrawableArray(randomQuestion);
+            drawableArray=retrieveDrawableArray(questionType, randomQuestion);
         }
 
         String[] questions = res.getStringArray(R.array.question_array);
@@ -160,14 +162,6 @@ public class PlayActivity extends AppCompatActivity {
             Drawable hold= drawableArray[i]; // shuffle the first array
             drawableArray[i]=drawableArray[randomShuffle];
             drawableArray[randomShuffle]=hold;
-
-            Drawable hold2 = drawableArray2[i]; //shuffle the second array
-            drawableArray2[i]=drawableArray2[randomShuffle];
-            drawableArray2[randomShuffle]=hold2;
-
-            String holdS = buttonText[i];//shuffle the button text too
-            buttonText[i]=buttonText[randomShuffle];
-            buttonText[randomShuffle]=holdS;
         }
 
 //set the question and the buttons to the randomQuestion
@@ -285,7 +279,7 @@ public class PlayActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
-    public Drawable[] retrieveDrawableArray(int randomQuestion){
+    public Drawable[] retrieveDrawableArray(int questionType,int randomQuestion){
         Resources res= getResources();
         TypedArray answerResources = res.obtainTypedArray(R.array.answers);
         int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
@@ -293,21 +287,42 @@ public class PlayActivity extends AppCompatActivity {
         TypedArray questionAnswers = res.obtainTypedArray(resId);//this is for a specific answer
         Drawable[] drawableArray = new Drawable[4];
 
-        if(randomQuestion==1){
+        if(questionType==1){
             for(int i=0; i<4; i++){
-                drawableArray[i]=questionAnswers.getDrawable(i);
+                Drawable d1 = questionAnswers.getDrawable(i);
+                Bitmap bm1 = ((BitmapDrawable)d1).getBitmap();
+                Drawable card1 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bm1, dipToPixels(this,55), dipToPixels(this,78), true));
+                drawableArray[i]=card1;
             }//ezpz
         }
-        else if(randomQuestion==2){
-            //compoundDrawable this shit
+        else if(questionType==2){
+            for(int i=0; i<4; i++){
+                Drawable d1 = questionAnswers.getDrawable(i*2);
+                Drawable d2 = questionAnswers.getDrawable(i*2+1);
+                Bitmap bm1 = ((BitmapDrawable)d1).getBitmap();
+                Bitmap bm2 = ((BitmapDrawable)d2).getBitmap();
+
+                Drawable card1 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bm1, dipToPixels(this,55), dipToPixels(this,78), true));
+                Drawable card2 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bm2, dipToPixels(this,55), dipToPixels(this,78),true));
+
+                Drawable[] layers = new Drawable[]{card1, card2};
+                LayerDrawable ld= new LayerDrawable(layers);
+                ld.setLayerGravity(0, Gravity.LEFT);
+                ld.setLayerGravity(1, Gravity.LEFT);
+                ld.setLayerInset(0,0,0,0,0);
+                ld.setLayerInset(1,50,0,0,0);
+                drawableArray[i]=ld;
+            }
+
         }
-        else if(randomQuestion==3){
+        else if(questionType==3){
             //text canvas paint hell ya
         }
 
+        //Drawable[] testArray = {getDrawable(R.drawable.c2s),getDrawable(R.drawable.c2s),getDrawable(R.drawable.c2s),getDrawable(R.drawable.c2s)};
 
         questionAnswers.recycle();//free
-        return drawableArray;
+        return drawableArray;//testArray;
     }
     public Drawable[] retrieveTypeTwo(int randomQuestion){
         Resources res = getResources();
@@ -410,11 +425,15 @@ public class PlayActivity extends AppCompatActivity {
         anim.setDuration(1000);
         createTimer();
         for(int i=0; i<4; i++){
-            //scale down images?
+
             answerButtons[i].setImageDrawable(answerImages[i]);
+            answerButtons[i].startAnimation(anim);
         }
 
     }
-
+    public static int dipToPixels(Context context, float dipValue) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
+    }
 
 }
