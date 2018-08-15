@@ -97,7 +97,7 @@ public class PlayActivity extends AppCompatActivity {
         for(int i=0; i<4; i++){
             answerButtons[i].setVisibility(View.INVISIBLE);
         }
-        scoreTextView.setText(getString(R.string.score)+score);
+        scoreTextView.setText(getString(R.string.score)+" "+score);
 
         Resources res = getResources();
         TypedArray answerResources = res.obtainTypedArray(R.array.question_array);
