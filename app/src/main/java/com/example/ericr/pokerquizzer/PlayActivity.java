@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -114,7 +116,7 @@ public class PlayActivity extends AppCompatActivity {
             }
         }
         answerResources.recycle();
-        //randomQuestion=17;
+        //randomQuestion=4;
 
         TextView heroTextView = findViewById(R.id.heroTextView);
         TextView villainTextView = findViewById(R.id.villainTextView);
@@ -317,7 +319,21 @@ public class PlayActivity extends AppCompatActivity {
 
         }
         else if(questionType==3){
-            //text canvas paint hell ya
+            String[] buttonText = res.getStringArray(resId);//this is for a specific answer
+            for(int i=0; i<4; i++){
+                //text canvas paint hell ya
+                Bitmap bm=Bitmap.createBitmap(dipToPixels(this,100), dipToPixels(this,100), Bitmap.Config.ARGB_8888);
+                Canvas c = new Canvas(bm);
+                Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+                p.setTextSize(dipToPixels(this,20));
+                Typeface font = Typeface.createFromAsset(getAssets(), "fonts/aquariusno8cg.ttf");
+                p.setTypeface(font);
+                //c.drawText(buttonText[i],0,224,p);
+                c.drawText(buttonText[i],dipToPixels(this,((100-(buttonText[i].length()*10))/2)),dipToPixels(this,55),p);
+                drawableArray[i] = new BitmapDrawable(getResources(),bm);
+
+            }
+
         }
 
         //Drawable[] testArray = {getDrawable(R.drawable.c2s),getDrawable(R.drawable.c2s),getDrawable(R.drawable.c2s),getDrawable(R.drawable.c2s)};
