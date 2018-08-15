@@ -93,7 +93,7 @@ public class PlayActivity extends AppCompatActivity {
     }
     public void newQuestion(final TextView questionTextView, final ImageButton[] answerButtons, final TextView scoreTextView){
         for(int i=0; i<4; i++){
-            //answerButtons[i].setBackgroundColor(Color.parseColor("#D7D7D7"));//from #D7D7D7
+            answerButtons[i].setVisibility(View.INVISIBLE);
         }
         scoreTextView.setText(getString(R.string.score)+score);
 
@@ -324,30 +324,6 @@ public class PlayActivity extends AppCompatActivity {
         questionAnswers.recycle();//free
         return drawableArray;//testArray;
     }
-    public Drawable[] retrieveTypeTwo(int randomQuestion){
-        Resources res = getResources();
-        TypedArray answerResources = res.obtainTypedArray(R.array.answers);
-        int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
-        answerResources.recycle();//free
-        TypedArray questionAnswers = res.obtainTypedArray(resId);//this is for a specific answer
-        Drawable[] drawableArray = new Drawable[8];
-
-        for(int i=0; i<8; i++){
-            drawableArray[i]=questionAnswers.getDrawable(i);
-        }
-
-        questionAnswers.recycle();//free
-        return drawableArray;
-    }//returns an array with 8 drawables.  These drawables are split up after this fucktion call
-    public String[] retrieveTypeThree (int randomQuestion){
-
-        Resources res = getResources();
-        TypedArray answerResources = res.obtainTypedArray(R.array.answers);
-        int resId = answerResources.getResourceId(randomQuestion, -1);//gets the ID of the "randomquestion"th string array
-        answerResources.recycle();//free
-        String[] buttonText = res.getStringArray(resId);//this is for a specific answer
-        return buttonText;
-    }
     public Drawable [] retrieveCommunity (int randomQuestion){
         Resources res = getResources();
         TypedArray communityResources = res.obtainTypedArray(R.array.community);
@@ -425,7 +401,7 @@ public class PlayActivity extends AppCompatActivity {
         anim.setDuration(1000);
         createTimer();
         for(int i=0; i<4; i++){
-
+            answerButtons[i].setVisibility(View.VISIBLE);
             answerButtons[i].setImageDrawable(answerImages[i]);
             answerButtons[i].startAnimation(anim);
         }
