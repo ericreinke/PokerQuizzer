@@ -46,7 +46,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
         <item>new_question_temp</item> <!-- 15 -->
         <item>Your opponent has moved all in and the pot is now $100.  What is highest bet you should call?</item>
         <item>A flush beats a straight</item>
-        <item>An Ace high straight flush is a Royal Flush</item>
+        <item>A Royal Flush beats an Ace-high straight flush</item>
 
     </string-array>
 
@@ -529,7 +529,7 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
             completes villain's straight on turn.
             Th2d has 48.1% and 7c7h has 36.2%
         </item>
-        <item>A full house of 3s full of Js will win more often than Js full of 3s (however Js full
+        <item>A full house of 3s full of Js will win more often than Js full of 3s (however Js full <!-- 15 -->
             of 3s will also tie more).
         </item>
         <item>You have around 2% chance of winning, or about 49:1. If the bet is $2, you are getting
@@ -538,6 +538,8 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
             they have Aces)
         </item>
         <item>In the great game of No Limit Texas Holdem, a flush always beats a straight.</item>
+        <item>A Royal Flush is a different way of saying an Ace-high straight flush.  They are identical.</item>
+
 
     </array>
 </resources>

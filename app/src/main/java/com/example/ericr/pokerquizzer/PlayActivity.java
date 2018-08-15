@@ -39,7 +39,7 @@ import static android.view.View.GONE;
 public class PlayActivity extends AppCompatActivity {
 
     private boolean isPaused=false;
-    private int correctIndex=0;
+    private int order=17;
     private long resumeFromMillis = 30000; //timer starts at 30 seconds
     private int score = 0;
     private int[] history = {-1,-1,-1,-1,-1};
@@ -114,7 +114,8 @@ public class PlayActivity extends AppCompatActivity {
             }
         }
         answerResources.recycle();
-        //randomQuestion=0;
+        //randomQuestion=17;
+
         TextView heroTextView = findViewById(R.id.heroTextView);
         TextView villainTextView = findViewById(R.id.villainTextView);
 
