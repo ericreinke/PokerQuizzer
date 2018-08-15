@@ -246,6 +246,7 @@
         android:layout_marginTop="8dp"
         android:text="timer_placeholder"
         android:textSize="18sp"
+        android:textColor="#FFFFFF"
         app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -259,6 +260,7 @@
         android:layout_marginTop="8dp"
         android:text="score_placeholder"
         android:textSize="18sp"
+        android:textColor="#FFFFFF"
         app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -274,6 +276,7 @@
         android:layout_marginTop="2dp"
         android:text="Hero"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
         app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintEnd_toEndOf="@+id/hero2"
         app:layout_constraintStart_toStartOf="@+id/hero1"
@@ -290,6 +293,7 @@
         android:layout_marginTop="2dp"
         android:text="Villain"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
         app:fontFamily="@font/aquariusno8cg"
         app:layout_constraintEnd_toEndOf="@+id/villain2"
         app:layout_constraintStart_toStartOf="@+id/villain1"
