@@ -345,8 +345,8 @@ To add a question, there are 6 (SIX!!!!!!)things you must add:
     </array>
 
     <string-array name="q18a">
-        <item>True</item>
         <item>False</item>
+        <item>True</item>
         <item>Depends on the suits</item>
         <item>Depends on the weather</item>
     </string-array>
